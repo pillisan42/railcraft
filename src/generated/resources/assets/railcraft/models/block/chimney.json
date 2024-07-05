@@ -1,0 +1,10 @@
+{
+  "parent": "railcraft:block/chimney_template",
+  "textures": {
+    "bottom": "railcraft:block/chimney_bottom",
+    "interior": "railcraft:block/chimney_interior",
+    "particle": "railcraft:block/chimney_side",
+    "side": "railcraft:block/chimney_side",
+    "top": "railcraft:block/chimney_top"
+  }
+}

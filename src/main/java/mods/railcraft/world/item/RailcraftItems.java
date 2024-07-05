@@ -144,6 +144,9 @@ public class RailcraftItems {
   public static final DeferredItem<BlockItem> FEED_STATION =
       blockItem(RailcraftBlocks.FEED_STATION);
 
+  public static final DeferredItem<BlockItem> CHIMNEY =
+      blockItem(RailcraftBlocks.CHIMNEY);
+
   public static final DeferredItem<BlockItem> LOGBOOK = blockItem(RailcraftBlocks.LOGBOOK);
 
   public static final DeferredItem<BlockItem> FRAME_BLOCK = blockItem(RailcraftBlocks.FRAME);

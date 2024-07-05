@@ -38,6 +38,10 @@ public class RailcraftParticleTypes {
       deferredRegister.register("force_spawn",
           () -> create(ForceSpawnParticleOptions.CODEC, ForceSpawnParticleOptions.STREAM_CODEC));
 
+  public static final DeferredHolder<ParticleType<?>, ParticleType<ChimneyParticleOptions>> CHIMNEY =
+      deferredRegister.register("chimney",
+          () -> create(ChimneyParticleOptions.CODEC, ChimneyParticleOptions.STREAM_CODEC));
+
   public static final DeferredHolder<ParticleType<?>, ParticleType<ChunkLoaderParticleOptions>> CHUNK_LOADER =
       deferredRegister.register("chunk_loader",
           () -> create(ChunkLoaderParticleOptions.CODEC, ChunkLoaderParticleOptions.STREAM_CODEC));

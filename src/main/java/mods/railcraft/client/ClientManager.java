@@ -41,6 +41,7 @@ import mods.railcraft.client.gui.screen.inventory.detector.LocomotiveDetectorScr
 import mods.railcraft.client.gui.screen.inventory.detector.SheepDetectorScreen;
 import mods.railcraft.client.gui.screen.inventory.detector.TankDetectorScreen;
 import mods.railcraft.client.model.RailcraftLayerDefinitions;
+import mods.railcraft.client.particle.ChimneyParticle;
 import mods.railcraft.client.particle.ChunkLoaderParticle;
 import mods.railcraft.client.particle.FireSparkParticle;
 import mods.railcraft.client.particle.ForceSpawnParticle;
@@ -202,6 +203,8 @@ public class ClientManager {
         FireSparkParticle.Provider::new);
     event.registerSpriteSet(RailcraftParticleTypes.FORCE_SPAWN.get(),
         ForceSpawnParticle.Provider::new);
+    event.registerSpriteSet(RailcraftParticleTypes.CHIMNEY.get(),
+        ChimneyParticle.Provider::new);
     event.registerSpriteSet(RailcraftParticleTypes.CHUNK_LOADER.get(),
         ChunkLoaderParticle.Provider::new);
   }
@@ -217,16 +220,13 @@ public class ClientManager {
   }
 
   private static void handleKeyRegister(RegisterKeyMappingsEvent event) {
-    event.register(KeyBinding.CHANGE_AURA.getKeyMapping());
-    event.register(KeyBinding.REVERSE.getKeyMapping());
-    event.register(KeyBinding.FASTER.getKeyMapping());
-    event.register(KeyBinding.SLOWER.getKeyMapping());
-    event.register(KeyBinding.MODE_CHANGE.getKeyMapping());
-    event.register(KeyBinding.WHISTLE.getKeyMapping());
+    for (var keyBinding : KeyBinding.values()) {
+      event.register(keyBinding.getKeyMapping());
+    }
   }
 
   // ================================================================================
-  // Forge Events
+  // NeoForge Events
   // ================================================================================
 
   @SubscribeEvent
@@ -298,11 +298,10 @@ public class ClientManager {
   @SubscribeEvent
   static void handleItemTooltip(ItemTooltipEvent event) {
     var itemStack = event.getItemStack();
-    var clickToCraft = itemStack.get(RailcraftDataComponents.CLICK_TO_CRAFT);
-    if (clickToCraft != null && clickToCraft) {
+    var clickToCraft = itemStack.getOrDefault(RailcraftDataComponents.CLICK_TO_CRAFT, false);
+    if (clickToCraft) {
       event.getToolTip().add(Component.translatable(Translations.Tips.CLICK_TO_CRAFT)
           .withStyle(ChatFormatting.YELLOW));
-
     }
   }
 

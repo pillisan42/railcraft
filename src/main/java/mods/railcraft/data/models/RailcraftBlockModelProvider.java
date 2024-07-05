@@ -8,6 +8,7 @@ import mods.railcraft.api.core.RailcraftConstants;
 import mods.railcraft.api.track.ArrowDirection;
 import mods.railcraft.world.entity.vehicle.locomotive.Locomotive;
 import mods.railcraft.world.level.block.AbstractStrengthenedGlassBlock;
+import mods.railcraft.world.level.block.ChimneyBlock;
 import mods.railcraft.world.level.block.CrusherMultiblockBlock;
 import mods.railcraft.world.level.block.ForceTrackEmitterBlock;
 import mods.railcraft.world.level.block.FurnaceMultiblockBlock;
@@ -320,6 +321,7 @@ public class RailcraftBlockModelProvider extends BlockStateProvider {
 
     this.createFrameBlock(RailcraftBlocks.FRAME.get());
     this.createLogBookBlock(RailcraftBlocks.LOGBOOK.get());
+    this.createChimneyBlock(RailcraftBlocks.CHIMNEY.get());
 
     this.createWorldSpikeBlock(RailcraftBlocks.WORLD_SPIKE.get());
     this.createWorldSpikeBlock(RailcraftBlocks.PERSONAL_WORLD_SPIKE.get());
@@ -987,6 +989,26 @@ public class RailcraftBlockModelProvider extends BlockStateProvider {
               .rotationY(((int) facing.toYRot() + 180) % 360)
               .build();
         });
+    this.simpleBlockItem(block, model);
+  }
+
+  private void createChimneyBlock(ChimneyBlock block) {
+    var topTexture = TextureMapping.getBlockTexture(block, "_top");
+    var bottomTexture = TextureMapping.getBlockTexture(block, "_bottom");
+    var sideTexture = TextureMapping.getBlockTexture(block, "_side");
+    var interiorTexture = TextureMapping.getBlockTexture(block, "_interior");
+
+    var smokerTemplate = this.modLoc("chimney_template");
+
+    var model =
+        this.models().withExistingParent(name(block), smokerTemplate)
+            .texture("top", topTexture)
+            .texture("bottom", bottomTexture)
+            .texture("side", sideTexture)
+            .texture("interior", interiorTexture)
+            .texture("bottom", bottomTexture)
+            .texture("particle", sideTexture);
+    this.simpleBlock(block, model);
     this.simpleBlockItem(block, model);
   }
 

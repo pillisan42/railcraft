@@ -72,6 +72,7 @@ public class RailcraftLanguageProvider extends LanguageProvider {
     this.addBlock(RailcraftBlocks.STEAM_TURBINE, "Steam Turbine Housing");
     this.addBlock(RailcraftBlocks.BLAST_FURNACE_BRICKS, "Blast Furnace Bricks");
     this.addBlock(RailcraftBlocks.FEED_STATION, "Feed Station");
+    this.addBlock(RailcraftBlocks.CHIMNEY, "Chimney");
     this.addBlock(RailcraftBlocks.LOGBOOK, "Logbook");
     this.addBlock(RailcraftBlocks.STEEL_BLOCK, "Block of Steel");
     this.addBlock(RailcraftBlocks.BRASS_BLOCK, "Block of Brass");
@@ -510,6 +511,7 @@ public class RailcraftLanguageProvider extends LanguageProvider {
     this.add(Translations.Tips.COAL_COKE_BLOCK, "%s Fuel Units");
     this.add(Translations.Tips.FORCE_TRACK_EMITTER, "Projects energy-based tracks");
     this.add(Translations.Tips.FEED_STATION, "Feeds animals");
+    this.add(Translations.Tips.CHIMNEY, "Emits smoke particles");
     this.add(Translations.Tips.LOGBOOK, "Records visitors");
     this.add(Translations.Tips.ROLLING_MACHINE, "Crafting bench for various metal items");
     this.add(Translations.Tips.ITEM_LOADER, "Loads items into carts");

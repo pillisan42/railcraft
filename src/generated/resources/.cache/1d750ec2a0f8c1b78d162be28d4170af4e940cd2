@@ -1,4 +1,4 @@
-// 1.21	2024-07-02T19:04:31.428667	Block States: railcraft
+// 1.21	2024-07-05T14:48:45.749043	Block States: railcraft
 add6c7b9a50c93a0ccd9ba6e317c1464c29ff9f0 assets/railcraft/blockstates/abandoned_activator_track.json
 141e735829ad3c7798b22e3fcc73490d9a9602ac assets/railcraft/blockstates/abandoned_booster_track.json
 bf85af556cff4cd7c4421614b631bf7d67ad23fe assets/railcraft/blockstates/abandoned_buffer_stop_track.json
@@ -64,6 +64,7 @@ e14430740b4bf40f59f0b54522c2a720c8576ecc assets/railcraft/blockstates/brown_stee
 5b1bddf8d77c27bb617d02468d0bdb5b821029b2 assets/railcraft/blockstates/brown_steel_tank_wall.json
 e4a1c807d75d6f17b950f947f0f5c83bac483c4a assets/railcraft/blockstates/brown_strengthened_glass.json
 716e63cb98da5adb3c0e23ddb3aeb98249ad63b0 assets/railcraft/blockstates/cart_dispenser.json
+7b94201f8d6b4a610b1e1d33ce409e914a4c37dd assets/railcraft/blockstates/chimney.json
 b4e853b1ce74e365dd60a6f295e2dcb21bba7e7b assets/railcraft/blockstates/chipped_steel_anvil.json
 5b68d5eeb761c97e65e41c60d2b937c9ed25fb8a assets/railcraft/blockstates/chiseled_abyssal_stone.json
 020c4bf2c1c9775f45293479d216e70989115a3a assets/railcraft/blockstates/chiseled_quarried_stone.json
@@ -506,6 +507,7 @@ fa8a34e0e7ad0060d98b61351de92fae7e3e25f0 assets/railcraft/models/block/brown_str
 d1bf9f0a1ffaaa07490da880bea491fa261f3b8d assets/railcraft/models/block/brown_strengthened_glass_single.json
 339781b4c1bb285645b8fda2408127451fa52707 assets/railcraft/models/block/brown_strengthened_glass_top.json
 d0ba402757d5725ebbe61735bbe07bfc5097e308 assets/railcraft/models/block/cart_dispenser.json
+cf5db93affcd0db3cb0a7531d6957be634248d83 assets/railcraft/models/block/chimney.json
 bbfdfbf2b7370e52d9fe2376c653e955e80aa2d6 assets/railcraft/models/block/chipped_steel_anvil.json
 28871bd5b70581071ecb7ba90d42a4a98edfe671 assets/railcraft/models/block/chiseled_abyssal_stone.json
 83f23a1adc2980d6c85b98a80c7fd1fa9e99ceca assets/railcraft/models/block/chiseled_quarried_stone.json
@@ -1275,6 +1277,7 @@ e61cb69975d3ae3fac3e338e5ffec20439a988a1 assets/railcraft/models/item/brown_stee
 bdce70a26c2bfdc25b28af0273a8f3f0358f00ac assets/railcraft/models/item/brown_steel_tank_wall.json
 e70f4283c5dd1dc6d4bf26223f5fcf798cce0065 assets/railcraft/models/item/brown_strengthened_glass.json
 d75eee563e5d6820c48b286a555f48507ca45635 assets/railcraft/models/item/cart_dispenser.json
+9fae0e1009d0c96ac6f741f2b03cea7b1d04e8c6 assets/railcraft/models/item/chimney.json
 81c32dd99947f8fb38ceafac7f640b9609d0c96d assets/railcraft/models/item/chipped_steel_anvil.json
 32e7e289b822d2f0483b3fd3255dd7656cd58c21 assets/railcraft/models/item/chiseled_abyssal_stone.json
 47fb6da36bf7785fc2658ebed28db319d7e039ab assets/railcraft/models/item/chiseled_quarried_stone.json

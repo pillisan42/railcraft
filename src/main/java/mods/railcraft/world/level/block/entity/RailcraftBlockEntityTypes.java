@@ -130,6 +130,12 @@ public class RailcraftBlockEntityTypes {
               .of(FeedStationBlockEntity::new, RailcraftBlocks.FEED_STATION.get())
               .build(null));
 
+  public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ChimneyBlockEntity>> SMOKER =
+      deferredRegister.register("smoker",
+          () -> BlockEntityType.Builder
+              .of(ChimneyBlockEntity::new, RailcraftBlocks.CHIMNEY.get())
+              .build(null));
+
   public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LogBookBlockEntity>> LOGBOOK =
       deferredRegister.register("logbook",
           () -> BlockEntityType.Builder

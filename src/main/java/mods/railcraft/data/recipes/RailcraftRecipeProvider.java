@@ -1055,6 +1055,14 @@ public class RailcraftRecipeProvider extends RecipeProvider implements IConditio
         .unlockedBy(getHasName(RailcraftItems.STEEL_PLATE.get()),
             has(RailcraftTags.Items.STEEL_PLATE))
         .save(recipeOutput);
+    ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RailcraftItems.CHIMNEY.get())
+        .pattern(" a ")
+        .pattern("bcb")
+        .define('a', Items.NETHERRACK)
+        .define('b', Tags.Items.DUSTS_REDSTONE)
+        .define('c', Items.CAULDRON)
+        .unlockedBy(getHasName(Items.REDSTONE), has(Items.REDSTONE))
+        .save(recipeOutput);
     ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RailcraftItems.LOGBOOK.get())
         .pattern(" a ")
         .pattern("bcb")

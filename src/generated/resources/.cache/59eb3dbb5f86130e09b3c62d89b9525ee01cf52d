@@ -1,4 +1,4 @@
-// 1.21	2024-07-02T19:04:31.421977	Loot Tables
+// 1.21	2024-07-05T14:48:45.742807	Loot Tables
 2368bf4f9231f79e11c75fe244dd7a820a896d65 data/railcraft/loot_table/blocks/abandoned_activator_track.json
 9097789b3b5eebaff6d62020fecf494c96348ac7 data/railcraft/loot_table/blocks/abandoned_booster_track.json
 fbbe6fc8014502014e25452e15f95dc665234e15 data/railcraft/loot_table/blocks/abandoned_buffer_stop_track.json
@@ -61,6 +61,7 @@ d7f4b3b9d999efaa7b3d6a5b3d6e80cd54e0d860 data/railcraft/loot_table/blocks/brown_
 dc195d60cfd3439e15015c499fd238f2ab933fc0 data/railcraft/loot_table/blocks/brown_steel_tank_wall.json
 74b99d4ae26fb1cdaaf17ac211607c4371df4c03 data/railcraft/loot_table/blocks/brown_strengthened_glass.json
 4bf3912392deb43a90b280425771d7120e4d2425 data/railcraft/loot_table/blocks/cart_dispenser.json
+396ed4a646eb5381dba55f26e07c495b7d0fa546 data/railcraft/loot_table/blocks/chimney.json
 f06b22ca6df0aeca3cd5ae68f34643acb155c218 data/railcraft/loot_table/blocks/chipped_steel_anvil.json
 6dc665c8479276bf53ff1de77fecee84be61604d data/railcraft/loot_table/blocks/chiseled_abyssal_stone.json
 e1ceb7f98b91523a5d36967b088bc6539bf2112d data/railcraft/loot_table/blocks/chiseled_quarried_stone.json

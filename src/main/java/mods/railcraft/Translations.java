@@ -222,6 +222,7 @@ public class Translations {
     public static final String COAL_COKE_BLOCK = makeKey("tips", "coal_coke_block");
     public static final String FORCE_TRACK_EMITTER = makeKey("tips", "force_track_emitter");
     public static final String FEED_STATION = makeKey("tips", "feed_station");
+    public static final String CHIMNEY = makeKey("tips", "chimney");
     public static final String LOGBOOK = makeKey("tips", "logbook");
     public static final String ROLLING_MACHINE = makeKey("tips", "rolling_machine");
     public static final String ITEM_LOADER = makeKey("tips", "item_loader");

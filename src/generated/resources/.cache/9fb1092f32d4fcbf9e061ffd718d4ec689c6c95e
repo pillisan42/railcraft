@@ -1,4 +1,4 @@
-// 1.21	2024-07-02T19:04:31.424484	Recipes
+// 1.21	2024-07-05T14:48:45.745161	Recipes
 880902358e9080f4dacc6209cc212af527fd250d data/minecraft/advancement/recipes/misc/gunpowder.json
 a2bb90ba3405540cd1d5f9ebd56e3e9a414b903b data/minecraft/advancement/recipes/misc/lead_ingot_from_blasting_deepslate_lead_ore.json
 a9fb3f1e0ef2641d91709ce3fda5abfe1aa1d8f7 data/minecraft/advancement/recipes/misc/lead_ingot_from_blasting_lead_ore.json
@@ -181,6 +181,7 @@ cd61719f12a2a07746cd800d2e5a9a802f1b743d data/railcraft/advancement/recipes/misc
 ce967b2d6e979337f8b30100fd86675d98ec8a0e data/railcraft/advancement/recipes/misc/charge_spool_medium_from_large.json
 16fe916b5e868d1bdf40e9a85197f435570c160f data/railcraft/advancement/recipes/misc/charge_spool_small_from_medium.json
 6b57ba3db9b51914d74a8b286b2334d8bc41740d data/railcraft/advancement/recipes/misc/charge_terminal.json
+f0dc7678302a2180da8a4b42a313912ea97f19c7 data/railcraft/advancement/recipes/misc/chimney.json
 19d1fbd701000eee2241b42e9d6b8a5540932f8e data/railcraft/advancement/recipes/misc/chiseled_abyssal_stone.json
 412e829e95d58fc18d4138dd123d3cec3162edd9 data/railcraft/advancement/recipes/misc/chiseled_quarried_stone.json
 36f436eb4dc81005b7cc50df6113e27e32a4ec61 data/railcraft/advancement/recipes/misc/coal_coke.json
@@ -700,6 +701,7 @@ ab63c3da678fa293269a584b3d3ea532b761b463 data/railcraft/recipe/charge_spool_medi
 5108a2382d81348206c813127cfe8c3ddd343e8d data/railcraft/recipe/charge_spool_small_from_medium.json
 67516b38f47e74b035f3f11bbe8dc114bbf84d6f data/railcraft/recipe/charge_terminal.json
 d0a914347403c0010f14c584ec3679d413ebdb32 data/railcraft/recipe/chest_minecart_disassembly.json
+5a1d22909589fbf4a7688584c00007dbc1a91552 data/railcraft/recipe/chimney.json
 b59e4b1b4a5bb184bf89204a1684aec499a216b1 data/railcraft/recipe/chiseled_abyssal_stone.json
 3ace60c46d2f1c7aeaa8aa7988db956a771ef757 data/railcraft/recipe/chiseled_quarried_stone.json
 543ab09e06cd3ca3ddcea704a4607ca9b023d939 data/railcraft/recipe/coal_coke.json

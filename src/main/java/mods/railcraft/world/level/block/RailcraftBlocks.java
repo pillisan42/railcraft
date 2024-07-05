@@ -337,6 +337,15 @@ public class RailcraftBlocks {
                   .requiresCorrectToolForDrops()
                   .sound(SoundType.WOOD)));
 
+  public static final DeferredBlock<ChimneyBlock> CHIMNEY =
+      deferredRegister.register("chimney",
+          () -> new ChimneyBlock(
+              BlockBehaviour.Properties.of()
+                  .mapColor(MapColor.STONE)
+                  .strength(2F)
+                  .requiresCorrectToolForDrops()
+                  .noOcclusion()));
+
   public static final DeferredBlock<LogBookBlock> LOGBOOK =
       deferredRegister.register("logbook",
           () -> new LogBookBlock(
