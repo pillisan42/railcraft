@@ -17,6 +17,7 @@ import mods.railcraft.data.RailcraftDatapackProvider;
 import mods.railcraft.data.RailcraftFluidTagsProvider;
 import mods.railcraft.data.RailcraftItemTagsProvider;
 import mods.railcraft.data.RailcraftLanguageProvider;
+import mods.railcraft.data.RailcraftParticleProvider;
 import mods.railcraft.data.RailcraftPoiTypeTagsProvider;
 import mods.railcraft.data.RailcraftSoundsProvider;
 import mods.railcraft.data.RailcraftSpriteSourceProvider;
@@ -325,6 +326,8 @@ public class Railcraft {
         new RailcraftSoundsProvider(packOutput, fileHelper));
     generator.addProvider(event.includeClient(),
         new RailcraftSpriteSourceProvider(packOutput, lookupProvider, fileHelper));
+    generator.addProvider(event.includeClient(),
+        new RailcraftParticleProvider(packOutput, fileHelper));
   }
 
   private void registerChunkControllers(RegisterTicketControllersEvent event) {
