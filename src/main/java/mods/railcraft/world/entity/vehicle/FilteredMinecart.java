@@ -1,7 +1,6 @@
 package mods.railcraft.world.entity.vehicle;
 
 import mods.railcraft.api.core.CompoundTagKeys;
-import mods.railcraft.api.item.PrototypedItem;
 import mods.railcraft.util.container.AdvancedContainer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -26,31 +25,12 @@ public abstract class FilteredMinecart extends RailcraftMinecart {
   protected FilteredMinecart(ItemStack itemStack, EntityType<?> type, double x, double y, double z,
       Level level) {
     super(itemStack, type, x, y, z, level);
-    this.setFilter(getFilterFromCartItem(itemStack));
   }
 
   @Override
   protected void defineSynchedData(SynchedEntityData.Builder builder) {
     super.defineSynchedData(builder);
     builder.define(FILTER, ItemStack.EMPTY);
-  }
-
-  private static ItemStack getFilterFromCartItem(ItemStack cartStack) {
-    return cartStack.getItem() instanceof PrototypedItem prototypedItem
-        ? prototypedItem.getPrototype(cartStack)
-        : ItemStack.EMPTY;
-  }
-
-  private static ItemStack addFilterToCartItem(ItemStack cartStack, ItemStack filterStack) {
-    if (!filterStack.isEmpty() && cartStack.getItem() instanceof PrototypedItem prototypedItem) {
-      prototypedItem.setPrototype(cartStack, filterStack);
-    }
-    return cartStack;
-  }
-
-  @Override
-  public ItemStack getPickResult() {
-    return addFilterToCartItem(super.getPickResult(), this.getFilterItem());
   }
 
   @Override

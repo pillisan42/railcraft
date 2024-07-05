@@ -51,7 +51,6 @@ public final class CompoundTagKeys {
   public static final String FUEL = "fuel";
   public static final String HIGH_SPEED = "highSpeed";
   public static final String ID = "id";
-  public static final String ID_MINECART_FRONT = "idMinecartFront";
   public static final String INDEX = "index";
   public static final String INPUT_SIGNAL = "inputSignal";
   public static final String INV_FILTER = "invFilter";
@@ -129,7 +128,6 @@ public final class CompoundTagKeys {
   public static final String TRAIN_DISPENSER_FILTERS = "trainDispenserFilters";
   public static final String TRAIN_LEAVING = "trainLeaving";
   public static final String TRAIN_SIZE = "trainSize";
-  public static final String TRAIN_UUID = "trainUUID";
   public static final String TRANSFER_MODE = "transferMode";
   public static final String VALUE = "value";
   public static final String WATER_TANK = "waterTank";
