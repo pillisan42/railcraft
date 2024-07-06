@@ -43,6 +43,9 @@ public class ChimneyBlockEntity extends RailcraftBlockEntity {
     if (level.hasNeighborSignal(blockPos)) {
       return;
     }
+    if (!level.getBlockState(blockPos.above()).isAir()) {
+      return;
+    }
     var random = level.getRandom();
     double px = blockPos.getX() + random.nextFloat();
     double py = blockPos.getY() + random.nextFloat() * 0.5F + 1;
