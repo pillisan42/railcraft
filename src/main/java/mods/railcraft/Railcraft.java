@@ -282,9 +282,9 @@ public class Railcraft {
 
   private void buildContents(BuildCreativeModeTabContentsEvent event) {
     if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
-      RailcraftCreativeModeTabs.addToolsAndUtilities(event.getEntries());
+      RailcraftCreativeModeTabs.addToolsAndUtilities(event);
     } else if (event.getTabKey() == CreativeModeTabs.COMBAT) {
-      RailcraftCreativeModeTabs.addCombat(event.getEntries());
+      RailcraftCreativeModeTabs.addCombat(event);
     }
   }
 

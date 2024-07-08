@@ -13,7 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.common.util.MutableHashedLinkedMap;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -458,9 +458,8 @@ public class RailcraftCreativeModeTabs {
     deferredRegister.register(modEventBus);
   }
 
-  public static void addToolsAndUtilities(
-      MutableHashedLinkedMap<ItemStack, TabVisibility> entries) {
-    entries.putAfter(
+  public static void addToolsAndUtilities(BuildCreativeModeTabContentsEvent event) {
+    event.insertAfter(
         new ItemStack(Items.SHEARS),
         new ItemStack(RailcraftItems.STEEL_SHEARS.get()),
         DEFAULT_VISIBILITY);
@@ -534,19 +533,18 @@ public class RailcraftCreativeModeTabs {
         RailcraftItems.DUAL_DISTANT_SIGNAL.get(),
         RailcraftItems.DUAL_TOKEN_SIGNAL.get());
 
-    addItemsToTab(addAfterChestMinecart, entries);
-    addItemsToTab(addAfterIronHoe, entries);
-    addItemsToTab(addAfterTNTMinecart, entries);
-    addItemsToTab(addAfterActivatorRail, entries);
+    addItemsToTab(addAfterChestMinecart, event);
+    addItemsToTab(addAfterIronHoe, event);
+    addItemsToTab(addAfterTNTMinecart, event);
+    addItemsToTab(addAfterActivatorRail, event);
   }
 
-  public static void addCombat(
-      MutableHashedLinkedMap<ItemStack, TabVisibility> entries) {
-    entries.putAfter(
+  public static void addCombat(BuildCreativeModeTabContentsEvent event) {
+    event.insertAfter(
         new ItemStack(Items.IRON_SWORD),
         new ItemStack(RailcraftItems.STEEL_SWORD.get()),
         DEFAULT_VISIBILITY);
-    entries.putAfter(
+    event.insertAfter(
         new ItemStack(Items.IRON_AXE),
         new ItemStack(RailcraftItems.STEEL_AXE.get()),
         DEFAULT_VISIBILITY);
@@ -557,13 +555,12 @@ public class RailcraftCreativeModeTabs {
         RailcraftItems.STEEL_CHESTPLATE.get(),
         RailcraftItems.STEEL_LEGGINGS.get(),
         RailcraftItems.STEEL_BOOTS.get());
-    addItemsToTab(addAfterIronBoots, entries);
+    addItemsToTab(addAfterIronBoots, event);
   }
 
-  private static void addItemsToTab(List<Item> list,
-      MutableHashedLinkedMap<ItemStack, TabVisibility> entries) {
+  private static void addItemsToTab(List<Item> list, BuildCreativeModeTabContentsEvent event) {
     for (int i = 1; i < list.size(); i++) {
-      entries.putAfter(
+      event.insertAfter(
           new ItemStack(list.get(i - 1)),
           new ItemStack(list.get(i)),
           DEFAULT_VISIBILITY);
