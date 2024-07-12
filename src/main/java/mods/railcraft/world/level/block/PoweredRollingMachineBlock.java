@@ -17,7 +17,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -104,8 +103,7 @@ public class PoweredRollingMachineBlock extends BaseEntityBlock
       boolean moved) {
     if (!state.is(newState.getBlock())
         && level.getBlockEntity(pos) instanceof PoweredRollingMachineBlockEntity rollingMachine) {
-      Containers.dropContents(level, pos, rollingMachine.getInvResult());
-      Containers.dropContents(level, pos, rollingMachine.getInvMatrix());
+      rollingMachine.dropContents(level, pos);
       level.updateNeighbourForOutputSignal(pos, this);
     }
     super.onRemove(state, level, pos, newState, moved);
