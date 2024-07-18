@@ -2,7 +2,6 @@ package mods.railcraft.world.level.block;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 import org.jetbrains.annotations.Nullable;
 import com.mojang.serialization.MapCodec;
 import mods.railcraft.util.BoxBuilder;
@@ -10,7 +9,6 @@ import mods.railcraft.world.item.RailcraftItems;
 import mods.railcraft.world.item.RefinedFirestoneItem;
 import mods.railcraft.world.level.block.entity.RailcraftBlockEntityTypes;
 import mods.railcraft.world.level.block.entity.RitualBlockEntity;
-import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.ItemStack;
@@ -28,11 +26,9 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.client.extensions.common.IClientBlockExtensions;
 
 public class RitualBlock extends BaseEntityBlock {
 
@@ -96,23 +92,6 @@ public class RitualBlock extends BaseEntityBlock {
   @Override
   public RenderShape getRenderShape(BlockState state) {
     return RenderShape.ENTITYBLOCK_ANIMATED;
-  }
-
-  @Override
-  public void initializeClient(Consumer<IClientBlockExtensions> consumer) {
-    consumer.accept(new IClientBlockExtensions() {
-      @Override
-      public boolean addDestroyEffects(BlockState state, Level level, BlockPos pos,
-          ParticleEngine particleEngine) {
-        return true;
-      }
-
-      @Override
-      public boolean addHitEffects(BlockState state, Level level, HitResult result,
-          ParticleEngine particleEngine) {
-        return true;
-      }
-    });
   }
 
   @Override

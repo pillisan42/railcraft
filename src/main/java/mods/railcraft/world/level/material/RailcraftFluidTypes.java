@@ -13,10 +13,17 @@ public class RailcraftFluidTypes {
       DeferredRegister.create(NeoForgeRegistries.Keys.FLUID_TYPES, RailcraftConstants.ID);
 
   public static final Supplier<FluidType> STEAM =
-      deferredRegister.register("steam", SteamFluid::createFluidType);
+      deferredRegister.register("steam", () ->
+          new FluidType(FluidType.Properties.create()
+              .temperature(400) // in kelvin, 150c
+              .density(-1000)
+              .viscosity(500)));
 
   public static final Supplier<FluidType> CREOSOTE =
-      deferredRegister.register("creosote", CreosoteFluid::createFluidType);
+      deferredRegister.register("creosote", () ->
+          new FluidType(FluidType.Properties.create()
+              .density(1100)
+              .viscosity(3000)));
 
   public static void register(IEventBus modEventBus) {
     deferredRegister.register(modEventBus);

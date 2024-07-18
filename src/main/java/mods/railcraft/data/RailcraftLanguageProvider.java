@@ -185,6 +185,8 @@ public class RailcraftLanguageProvider extends LanguageProvider {
     this.addBlock(RailcraftBlocks.ZINC_SILVER_BATTERY, "Zinc-Silver Battery");
     this.addBlock(RailcraftBlocks.ZINC_SILVER_BATTERY_EMPTY, "Zinc-Silver Empty Battery");
 
+    this.addBlock(RailcraftBlocks.CREOSOTE, "Creosote");
+
     this.addBlockColorVariants(RailcraftBlocks.STRENGTHENED_GLASS, "Strengthened Glass");
     this.addBlockColorVariants(RailcraftBlocks.POST, "Post");
     this.addBlockColorVariants(RailcraftBlocks.IRON_TANK_GAUGE, "Iron Tank Gauge");

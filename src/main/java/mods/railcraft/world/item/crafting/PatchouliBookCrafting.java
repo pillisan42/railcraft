@@ -1,5 +1,6 @@
 package mods.railcraft.world.item.crafting;
 
+import org.jetbrains.annotations.Nullable;
 import mods.railcraft.world.item.RailcraftItems;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -17,6 +18,7 @@ public class PatchouliBookCrafting extends ShapelessRecipe {
 
   private static final String NBT_KEY = "patchouli:book";
   private static final String NBT_VAL = "railcraft:guide_book";
+  @Nullable
   private static Item GUIDE_BOOK;
 
   public PatchouliBookCrafting(CraftingBookCategory category) {
@@ -32,7 +34,7 @@ public class PatchouliBookCrafting extends ShapelessRecipe {
     return GUIDE_BOOK;
   }
 
-  public static ItemStack makeGuideBook() {
+  private static ItemStack makeGuideBook() {
     var book = new ItemStack(guide_book());
     //FIXME
     //var tag = book.getOrCreateTag();

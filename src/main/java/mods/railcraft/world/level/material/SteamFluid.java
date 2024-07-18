@@ -1,10 +1,7 @@
 package mods.railcraft.world.level.material;
 
-import java.util.function.Consumer;
-import mods.railcraft.api.core.RailcraftConstants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
@@ -16,7 +13,6 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.fluids.FluidType;
 
 public class SteamFluid extends Fluid {
@@ -80,35 +76,5 @@ public class SteamFluid extends Fluid {
   @Override
   public FluidType getFluidType() {
     return RailcraftFluidTypes.STEAM.get();
-  }
-
-  public static FluidType createFluidType() {
-    var properties = FluidType.Properties.create()
-        .temperature(400) // in kelvin, 150c
-        .density(-1000)
-        .viscosity(500);
-    return new FluidType(properties) {
-      @Override
-      public void initializeClient(Consumer<IClientFluidTypeExtensions> consumer) {
-        consumer.accept(new IClientFluidTypeExtensions() {
-          private static final ResourceLocation STILL_TEXTURE = RailcraftConstants.rl("block/steam_still");
-
-          @Override
-          public int getTintColor() {
-            return 0xFFF5F5F5;
-          }
-
-          @Override
-          public ResourceLocation getStillTexture() {
-            return STILL_TEXTURE;
-          }
-
-          @Override
-          public ResourceLocation getFlowingTexture() {
-            return STILL_TEXTURE;
-          }
-        });
-      }
-    };
   }
 }

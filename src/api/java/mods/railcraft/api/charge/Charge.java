@@ -300,7 +300,6 @@ public enum Charge implements StringRepresentable,
      * Apply Charge damage to the target entity from the current network.
      */
     default void zap(Entity entity, DamageOrigin origin, float damage) {
-      return;
     }
   }
 

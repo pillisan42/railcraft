@@ -1,5 +1,9 @@
 package mods.railcraft.client;
 
+import org.jetbrains.annotations.NotNull;
+import org.joml.Vector3f;
+import com.mojang.blaze3d.shaders.FogShape;
+import com.mojang.blaze3d.systems.RenderSystem;
 import mods.railcraft.Railcraft;
 import mods.railcraft.RailcraftConfig;
 import mods.railcraft.Translations;
@@ -63,16 +67,26 @@ import mods.railcraft.world.item.component.RailcraftDataComponents;
 import mods.railcraft.world.level.block.ForceTrackEmitterBlock;
 import mods.railcraft.world.level.block.RailcraftBlocks;
 import mods.railcraft.world.level.block.track.ForceTrackBlock;
+import mods.railcraft.world.level.material.RailcraftFluidTypes;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.ChatScreen;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.client.renderer.FogRenderer;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.entity.vehicle.Minecart;
 import net.minecraft.world.level.GrassColor;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.HitResult;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
@@ -89,6 +103,9 @@ import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
+import net.neoforged.neoforge.client.extensions.common.IClientBlockExtensions;
+import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -107,6 +124,7 @@ public class ClientManager {
     modEventBus.addListener(ClientManager::handleRegisterRenderers);
     modEventBus.addListener(ClientManager::handleRegisterLayerDefinitions);
     modEventBus.addListener(ClientManager::handleKeyRegister);
+    modEventBus.addListener(ClientManager::handleClientExtensions);
     NeoForge.EVENT_BUS.register(ClientManager.class);
 
     SignalUtil._setTuningAuraHandler(new TuningAuraHandlerImpl());
@@ -223,6 +241,81 @@ public class ClientManager {
     for (var keyBinding : KeyBinding.values()) {
       event.register(keyBinding.getKeyMapping());
     }
+  }
+
+  private static void handleClientExtensions(RegisterClientExtensionsEvent event) {
+    event.registerBlock(new IClientBlockExtensions() {
+      @Override
+      public boolean addDestroyEffects(BlockState state, Level level, BlockPos pos,
+          ParticleEngine particleEngine) {
+        return true;
+      }
+
+      @Override
+      public boolean addHitEffects(BlockState state, Level level, HitResult result,
+          ParticleEngine particleEngine) {
+        return true;
+      }
+    }, RailcraftBlocks.RITUAL.get());
+
+    event.registerFluidType(new IClientFluidTypeExtensions() {
+      private static final ResourceLocation STILL_TEXTURE =
+          RailcraftConstants.rl("block/steam_still");
+
+      @Override
+      public int getTintColor() {
+        return 0xFFF5F5F5;
+      }
+
+      @Override
+      public ResourceLocation getStillTexture() {
+        return STILL_TEXTURE;
+      }
+
+      @Override
+      public ResourceLocation getFlowingTexture() {
+        return STILL_TEXTURE;
+      }
+    }, RailcraftFluidTypes.STEAM.get());
+
+    event.registerFluidType(new IClientFluidTypeExtensions() {
+      private static final ResourceLocation STILL_TEXTURE =
+          ResourceLocation.withDefaultNamespace("block/water_still");
+      private static final ResourceLocation FLOW_TEXURE =
+          ResourceLocation.withDefaultNamespace("block/water_flow");
+
+      @Override
+      public int getTintColor() {
+        return 0xFF6A6200;
+      }
+
+      @Override
+      public ResourceLocation getStillTexture() {
+        return STILL_TEXTURE;
+      }
+
+      @Override
+      public ResourceLocation getFlowingTexture() {
+        return FLOW_TEXURE;
+      }
+
+      @Override
+      @NotNull
+      public Vector3f modifyFogColor(Camera camera, float partialTick,
+          ClientLevel level, int renderDistance, float darkenWorldAmount, Vector3f fluidFogColor) {
+        var x = Integer.parseInt("6A", 16) / 255f;
+        var y = Integer.parseInt("62", 16) / 255f;
+        var z = Integer.parseInt("00", 16) / 255f;
+        return new Vector3f(x, y, z);
+      }
+
+      @Override
+      public void modifyFogRender(Camera camera, FogRenderer.FogMode mode, float renderDistance,
+          float partialTick, float nearDistance, float farDistance, FogShape shape) {
+        RenderSystem.setShaderFogStart(0);
+        RenderSystem.setShaderFogEnd(3f);
+      }
+    }, RailcraftFluidTypes.CREOSOTE.get());
   }
 
   // ================================================================================
