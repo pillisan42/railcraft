@@ -281,7 +281,7 @@ public class ClientManager {
     event.registerFluidType(new IClientFluidTypeExtensions() {
       private static final ResourceLocation STILL_TEXTURE =
           ResourceLocation.withDefaultNamespace("block/water_still");
-      private static final ResourceLocation FLOW_TEXURE =
+      private static final ResourceLocation FLOW_TEXTURE =
           ResourceLocation.withDefaultNamespace("block/water_flow");
 
       @Override
@@ -296,7 +296,7 @@ public class ClientManager {
 
       @Override
       public ResourceLocation getFlowingTexture() {
-        return FLOW_TEXURE;
+        return FLOW_TEXTURE;
       }
 
       @Override
