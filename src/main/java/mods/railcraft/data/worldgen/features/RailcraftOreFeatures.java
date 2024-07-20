@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.function.Supplier;
 import com.google.common.base.Suppliers;
 import mods.railcraft.api.core.RailcraftConstants;
+import mods.railcraft.tags.RailcraftTags;
 import mods.railcraft.world.level.block.RailcraftBlocks;
+import mods.railcraft.world.level.levelgen.feature.RailcraftFeatures;
+import mods.railcraft.world.level.levelgen.feature.configuration.QuarriedConfiguration;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
@@ -17,6 +20,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.DiskConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedBlockStateProvider;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
@@ -30,14 +34,13 @@ public class RailcraftOreFeatures {
   private static final int NICKEL_VEIN_DIMENSION = 7;
   private static final int NICKEL_SMALL_VEIN_DIMENSION = 4;
   private static final int SILVER_VEIN_DIMENSION = 10;
-  private static final int QUARRIED_STONE_VEIN_DIMENSION = 32;
 
   private static final TagMatchTest STONE_ORE_REPLACEABLES =
       new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
   private static final TagMatchTest DEEPSLATE_ORE_REPLACEABLES =
       new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
-  private static final TagMatchTest BASE_STONE_OVERWORLD =
-      new TagMatchTest(BlockTags.BASE_STONE_OVERWORLD);
+  private static final TagMatchTest QUARRIED_REPLACEABLE_BLOCKS =
+      new TagMatchTest(RailcraftTags.Blocks.QUARRIED_REPLACEABLE_BLOCKS);
 
   private static final Supplier<List<OreConfiguration.TargetBlockState>> LEAD_ORE_TARGET_LIST =
       Suppliers.memoize(() -> List.of(
@@ -117,10 +120,10 @@ public class RailcraftOreFeatures {
         new OreConfiguration(SILVER_ORE_TARGET_LIST.get(), SILVER_VEIN_DIMENSION)));
     context.register(SILVER_ORE_BURIED, new ConfiguredFeature<>(Feature.ORE,
         new OreConfiguration(SILVER_ORE_TARGET_LIST.get(), SILVER_VEIN_DIMENSION, 0.5F)));
-    context.register(QUARRIED_STONE, new ConfiguredFeature<>(Feature.ORE,
-        new OreConfiguration(BASE_STONE_OVERWORLD,
-            RailcraftBlocks.QUARRIED_STONE.get().defaultBlockState(),
-            QUARRIED_STONE_VEIN_DIMENSION)));
+    context.register(QUARRIED_STONE, new ConfiguredFeature<>(RailcraftFeatures.QUARRIED_STONE.get(),
+        new QuarriedConfiguration(
+            QUARRIED_REPLACEABLE_BLOCKS,
+            BlockStateProvider.simple(RailcraftBlocks.QUARRIED_STONE.get()))));
     context.register(SALTPETER, new ConfiguredFeature<>(Feature.DISK,
         new DiskConfiguration(
             RuleBasedBlockStateProvider.simple(RailcraftBlocks.SALTPETER_ORE.get()),

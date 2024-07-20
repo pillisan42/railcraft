@@ -226,6 +226,9 @@ public class RailcraftTags {
     public static final TagKey<Block> STEEL_TANK_WALL = tag("steel_tank_wall");
 
     public static final TagKey<Block> QUARRIED = tag("quarried");
+    public static final TagKey<Block> QUARRIED_REPLACEABLE_BLOCKS =
+        tag("quarried_replaceable_blocks");
+
     public static final TagKey<Block> ABYSSAL = tag("abyssal");
     public static final TagKey<Block> DETECTOR = tag("detector");
 

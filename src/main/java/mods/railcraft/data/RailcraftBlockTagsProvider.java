@@ -347,6 +347,12 @@ public class RailcraftBlockTagsProvider extends BlockTagsProvider {
             RailcraftBlocks.ETCHED_QUARRIED_STONE.get(),
             RailcraftBlocks.QUARRIED_BRICKS.get(),
             RailcraftBlocks.QUARRIED_PAVER.get());
+    this.tag(RailcraftTags.Blocks.QUARRIED_REPLACEABLE_BLOCKS)
+        .addTags(BlockTags.DIRT)
+        .addTags(BlockTags.BASE_STONE_OVERWORLD)
+        .addTags(Tags.Blocks.ORES)
+        .add(Blocks.CLAY)
+        .add(Blocks.GRAVEL);
 
     this.tag(RailcraftTags.Blocks.ABYSSAL)
         .add(RailcraftBlocks.ABYSSAL_STONE.get(),

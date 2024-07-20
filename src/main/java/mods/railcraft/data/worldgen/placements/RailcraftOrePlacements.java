@@ -20,6 +20,7 @@ import net.minecraft.world.level.levelgen.placement.CountPlacement;
 import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
 import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.minecraft.world.level.material.Fluids;
 
 public class RailcraftOrePlacements {
@@ -111,9 +112,10 @@ public class RailcraftOrePlacements {
                     VerticalAnchor.absolute(-48)))));
     context.register(QUARRIED_STONE,
         new PlacedFeature(getConfiguredFeature(context, RailcraftOreFeatures.QUARRIED_STONE),
-            OrePlacements.commonOrePlacement(6,
-                HeightRangePlacement.uniform(VerticalAnchor.absolute(20),
-                    VerticalAnchor.absolute(80)))));
+            List.of(
+                RarityFilter.onAverageOnceEvery(40),
+                InSquarePlacement.spread(),
+                BiomeFilter.biome())));
     context.register(SALTPETER,
         new PlacedFeature(getConfiguredFeature(context, RailcraftOreFeatures.SALTPETER),
             List.of(
