@@ -147,6 +147,70 @@ public class Translations {
         makeKey("screen", "item_detector.filter_mode.greater_than");
   }
 
+  public static class ConfigurationScreen {
+    public static final String SEASON_ENABLED = makeConfigurationKey("seasonsEnabled");
+    public static final String CHRISTMAS = makeConfigurationKey("christmas");
+    public static final String HALLOWEEN = makeConfigurationKey("halloween");
+    public static final String HARVEST = makeConfigurationKey("harvest");
+
+    public static final String POLAR_EXPRESS_ENABLED =
+        makeConfigurationKey("polarExpressEnabled");
+    public static final String GHOST_TRAIN_ENABLED =
+        makeConfigurationKey("ghostTrainEnabled");
+    public static final String SHOW_BETA_MESSAGE = makeConfigurationKey("showBetaMessage");
+    public static final String LOCOMOTIVE_LIGHT_LEVEL =
+        makeConfigurationKey("locomotiveLightLevel");
+
+    public static final String HIGH_SPEED_TRACK = makeConfigurationKey("highSpeedTrack");
+    public static final String HIGH_SPEED_TRACK_MAX_SPEED =
+        makeConfigurationKey("highSpeedTrackMaxSpeed");
+    public static final String HIGH_SPEED_TRACK_IGNORED_ENTITIES =
+        makeConfigurationKey("highSpeedTrackIgnoredEntities");
+    public static final String STRAP_IRON_TRACK_MAX_SPEED =
+        makeConfigurationKey("strapIronTrackMaxSpeed");
+    public static final String CHEST_ALLOW_FLUIDS = makeConfigurationKey("chestAllowFluids");
+    public static final String CARGO_BLACKLIST = makeConfigurationKey("cargoBlacklist");
+    public static final String CARTS_COLLIDE_WITH_ITEMS =
+        makeConfigurationKey("cartsCollideWithItems");
+    public static final String LOCOMOTIVE_DAMAGE_MOBS = makeConfigurationKey("damageMobs");
+    public static final String LOCOMOTIVE_HORSEPOWER = makeConfigurationKey("horsepower");
+    public static final String SOLID_CARTS = makeConfigurationKey("solidCarts");
+    public static final String BORE_MINING_SPEED_MULTIPLIER =
+        makeConfigurationKey("boreMiningSpeedMultiplier");
+    public static final String BORE_DESTROYS_BLOCKS =
+        makeConfigurationKey("boreDestroysBlocks");
+    public static final String BORE_MINES_ALL_BLOCKS =
+        makeConfigurationKey("boreMinesAllBlocks");
+    public static final String CARTS_BREAK_ON_DROP =
+        makeConfigurationKey("cartsBreakOnDrop");
+    public static final String STEAM_LOCOMOTIVE_EFFICIENCY =
+        makeConfigurationKey("steamLocomotiveEfficiency");
+    public static final String TANK_CART_FLUID_TRANSFER_RATE =
+        makeConfigurationKey("tankCartFluidTransferRate");
+    public static final String TANK_CART_FLUID_CAPACITY =
+        makeConfigurationKey("tankCartFluidCapacity");
+    public static final String TANK_STACKING_ENABLED =
+        makeConfigurationKey("tankStackingEnabled");
+    public static final String MAX_TANK_SIZE = makeConfigurationKey("maxTankSize");
+    public static final String TANK_CAPACITY_PER_BLOCK =
+        makeConfigurationKey("tankCapacityPerBlock");
+    public static final String WATER_COLLECTION_RATE =
+        makeConfigurationKey("waterCollectionRate");
+    public static final String MAX_LAUNCHER_TRACK_FORCE =
+        makeConfigurationKey("maxLauncherTrackForce");
+    public static final String CART_DISPENSER_DELAY =
+        makeConfigurationKey("cartDispenserDelay");
+    public static final String CHANGE_DUNGEON_LOOT =
+        makeConfigurationKey("changeDungeonLoot");
+    public static final String CHARGE = makeConfigurationKey("charge");
+    public static final String LOSS_MULTIPLIER = makeConfigurationKey("lossMultiplier");
+    public static final String PREFERRED_ORES = makeConfigurationKey("preferredOres");
+    public static final String STEAM = makeConfigurationKey("steam");
+    public static final String FUEL_MULTIPLIER = makeConfigurationKey("fuelMultiplier");
+    public static final String FUEL_PER_STEAM_MULTIPLIER =
+        makeConfigurationKey("fuelPerSteamMultiplier");
+  }
+
   public static class Tips {
 
     public static final String ROUTING_TICKET_ISSUER = makeKey("tips", "routing.ticket.issuer");
@@ -637,6 +701,10 @@ public class Translations {
 
   public static String makeKey(String type, String name) {
     return RailcraftConstants.makeTranslationKey(type, name);
+  }
+
+  private static String makeConfigurationKey(String name) {
+   return String.format("%s.configuration.%s", RailcraftConstants.ID, name);
   }
 
   private static String makeJadeKey(String name) {

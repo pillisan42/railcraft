@@ -102,6 +102,8 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.client.gui.ConfigurationScreen;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.world.chunk.RegisterTicketControllersEvent;
 import net.neoforged.neoforge.common.world.chunk.TicketController;
@@ -141,6 +143,7 @@ public class Railcraft {
     NeoForge.EVENT_BUS.register(this);
 
     RailcraftConfig.registerConfig(modContainer);
+    modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
 
     var modEventBus = modContainer.getEventBus();
     modEventBus.addListener(this::handleRegisterCapabilities);

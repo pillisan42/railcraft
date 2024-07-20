@@ -364,7 +364,7 @@ public class ClientManager {
 
     var qualifier = modInfo.getVersion().getQualifier();
     boolean isSnapshot = qualifier != null && qualifier.equals("snapshot");
-    boolean showMessageBeta = Railcraft.BETA && RailcraftConfig.CLIENT.showMessageBeta.get();
+    boolean showMessageBeta = Railcraft.BETA && RailcraftConfig.CLIENT.showBetaMessage.get();
     if (!FMLLoader.isProduction() || isSnapshot || showMessageBeta) {
       var type = isSnapshot ? "development" : "beta";
       var issueUrl = ((ModFileInfo) (modInfo.getOwningFile())).getIssueURL().toString();

@@ -2,7 +2,6 @@ package mods.railcraft;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.google.common.collect.ImmutableList;
 import mods.railcraft.api.core.RailcraftConstants;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.fml.ModContainer;
@@ -38,6 +37,17 @@ public class RailcraftConfig {
     container.registerConfig(ModConfig.Type.CLIENT, RailcraftConfig.CLIENT_SPEC);
     container.registerConfig(ModConfig.Type.COMMON, RailcraftConfig.COMMON_SPEC);
     container.registerConfig(ModConfig.Type.SERVER, RailcraftConfig.SERVER_SPEC);
+  }
+
+  private static boolean isValidResourceLocation(Object obj) {
+    var str = obj.toString();
+    if (str.isEmpty()) {
+      return false;
+    }
+    if (!str.contains(":")) {
+      return false;
+    }
+    return ResourceLocation.tryParse(str) != null;
   }
 
   public static class Server {
@@ -81,7 +91,7 @@ public class RailcraftConfig {
             .comment(
                 "Change to limit max speed on high speed rails, useful if your computer can't keep up with chunk loading",
                 "iron tracks operate at 0.4 blocks per tick")
-            .defineInRange("maxSpeed", 1.0D, 0.6D, 1.2D);
+            .defineInRange("highSpeedTrackMaxSpeed", 1.0D, 0.6D, 1.2D);
 
         final var defaultEntities = List.of(
             "minecraft:bat", "minecraft:blaze", "minecraft:cave_spider",
@@ -91,15 +101,15 @@ public class RailcraftConfig {
         this.highSpeedTrackIgnoredEntities = builder
             .comment(
                 "Add entity names to exclude them from explosions caused by high speed collisions")
-            .defineList("ignoredEntities", defaultEntities,
-                obj -> ResourceLocation.tryParse(obj.toString()) != null);
+            .defineList("highSpeedTrackIgnoredEntities", () -> defaultEntities,
+                () -> "minecraft:bat", RailcraftConfig::isValidResourceLocation);
       }
       builder.pop();
 
       this.strapIronTrackMaxSpeed = builder
           .comment(
               "Change to limit max speed on strap iron rails. Vanilla iron rails goes as fast as 0.4D/tick")
-          .defineInRange("maxSpeed", 0.12D, 0.1D, 0.3D);
+          .defineInRange("strapIronTrackMaxSpeed", 0.12D, 0.1D, 0.3D);
 
       this.chestAllowFluids = builder
           .comment("Change to 'true' to allow fluid containers in Chest and Cargo Carts")
@@ -107,12 +117,12 @@ public class RailcraftConfig {
 
       this.cargoBlacklist = builder
           .comment("List of items that the cargo loader will ignore")
-          .defineList("cargoBlacklist", ArrayList::new,
-              obj -> ResourceLocation.tryParse(obj.toString()) != null);
+          .defineList("cargoBlacklist", ArrayList::new, () -> "minecraft:dirt",
+              RailcraftConfig::isValidResourceLocation);
 
       this.locomotiveDamageMobs = builder
           .comment(
-              "change to 'false' to disable Locomotive damage on mobs, they will still knockback mobs")
+              "Change to 'false' to disable Locomotive damage on mobs, they will still knockback mobs")
           .define("damageMobs", true);
       this.locomotiveHorsepower = builder
           .comment("Controls how much power locomotives have and how many carts they can pull",
@@ -183,7 +193,7 @@ public class RailcraftConfig {
           .defineInRange("waterCollectionRate", 4, 0, 1000);
 
       this.maxLauncherTrackForce = builder
-          .comment("change the value to your desired max launch rail force")
+          .comment("Change the value to your desired max launch rail force")
           .defineInRange("maxLauncherTrackForce", 30, 5, 50);
 
       this.cartDispenserDelay = builder
@@ -193,7 +203,7 @@ public class RailcraftConfig {
       builder.push("charge");
       {
         this.lossMultiplier = builder
-            .comment("adjust the losses for the Charge network")
+            .comment("Adjust the losses for the Charge network")
             .defineInRange("lossMultiplier", 1.0D, 0.2D, 10.0D);
       }
       builder.pop();
@@ -201,7 +211,7 @@ public class RailcraftConfig {
       builder.push("steam");
       {
         this.fuelMultiplier = builder
-            .comment("adjust the heat value of Fuel in a Boiler")
+            .comment("Adjust the heat value of Fuel in a Boiler")
             .defineInRange("fuelMultiplier", 1.0F, 0.2F, 10F);
         this.fuelPerSteamMultiplier = builder
             .comment("Adjust the amount of fuel used to create steam.")
@@ -210,11 +220,12 @@ public class RailcraftConfig {
       builder.pop();
 
       this.changeDungeonLoot = builder
-          .comment("change the vanilla dungeon loot")
+          .comment("Change the vanilla dungeon loot")
           .define("changeDungeonLoot", true);
       this.preferredOres = builder
           .comment("An ordered list of mod ids from which the items will be chosen, which Railcraft does not add, and which are necessary for recipes based on tags to work.")
-          .defineList("preferredOres", ImmutableList.of(RailcraftConstants.ID, "minecraft"), __ -> true);
+          .defineList("preferredOres", () -> List.of(RailcraftConstants.ID, "minecraft"),
+              () -> "modId", __ -> true);
     }
   }
 
@@ -226,9 +237,6 @@ public class RailcraftConfig {
     public final IntValue harvest;
 
     private Common(ModConfigSpec.Builder builder) {
-      builder.comment("General configuration settings")
-          .push("common");
-
       this.seasonsEnabled = builder
           .comment("Enable season-based item & train effects?")
           .define("seasonsEnabled", true);
@@ -244,8 +252,6 @@ public class RailcraftConfig {
       this.harvest = builder
           .comment("Controls whether Harvest mode is (0) enabled, (1) forced, or (2) disabled")
           .defineInRange("harvest", 0, 0, 2);
-
-      builder.pop();
     }
   }
 
@@ -253,7 +259,7 @@ public class RailcraftConfig {
 
     public final BooleanValue ghostTrainEnabled;
     public final BooleanValue polarExpressEnabled;
-    public final BooleanValue showMessageBeta;
+    public final BooleanValue showBetaMessage;
     public final IntValue locomotiveLightLevel;
 
     private Client(ModConfigSpec.Builder builder) {
@@ -271,9 +277,9 @@ public class RailcraftConfig {
               "If it is '0' then locomotive lightning will be disabled.")
           .defineInRange("locomotiveLightLevel", 14, 0, 15);
 
-      this.showMessageBeta = builder
+      this.showBetaMessage = builder
           .comment("Set to false to disable the message that informs you that you are using a beta version.")
-          .define("showMessageBeta", true);
+          .define("showBetaMessage", true);
     }
   }
 }

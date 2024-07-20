@@ -60,6 +60,7 @@ public class RailcraftLanguageProvider extends LanguageProvider {
     this.routingTableTranslations();
     this.chargeMeterTranslations();
     this.keyBindingTranslations();
+    this.configurationTranslations();
   }
 
   private void blockTranslations() {
@@ -1315,6 +1316,57 @@ public class RailcraftLanguageProvider extends LanguageProvider {
     this.add(Translations.KeyBinding.REVERSE, "Change locomotive direction");
     this.add(Translations.KeyBinding.WHISTLE, "Locomotive whistle");
     this.add(Translations.KeyBinding.MODE, "Change locomotive mode");
+  }
+
+  private void configurationTranslations() {
+    this.add(Translations.ConfigurationScreen.SEASON_ENABLED, "Seasons enabled");
+    this.add(Translations.ConfigurationScreen.CHRISTMAS, "Christmas mode");
+    this.add(Translations.ConfigurationScreen.HALLOWEEN, "Halloween mode");
+    this.add(Translations.ConfigurationScreen.HARVEST, "Harvest mode");
+
+    this.add(Translations.ConfigurationScreen.POLAR_EXPRESS_ENABLED, "Polar Express enabled");
+    this.add(Translations.ConfigurationScreen.GHOST_TRAIN_ENABLED, "Ghost Train enabled");
+    this.add(Translations.ConfigurationScreen.LOCOMOTIVE_LIGHT_LEVEL, "Locomotive light level");
+    this.add(Translations.ConfigurationScreen.SHOW_BETA_MESSAGE, "Show beta message");
+
+    this.add(Translations.ConfigurationScreen.HIGH_SPEED_TRACK, "High Speed Track");
+    this.add(Translations.ConfigurationScreen.HIGH_SPEED_TRACK_MAX_SPEED,
+        "High Speed Track max speed");
+    this.add(Translations.ConfigurationScreen.HIGH_SPEED_TRACK_IGNORED_ENTITIES,
+        "Ignored entities");
+    this.add(Translations.ConfigurationScreen.STRAP_IRON_TRACK_MAX_SPEED,
+        "Strap Iron Track max speed");
+    this.add(Translations.ConfigurationScreen.CHEST_ALLOW_FLUIDS, "Chest allow fluids");
+    this.add(Translations.ConfigurationScreen.CARGO_BLACKLIST, "Cargo blacklist");
+    this.add(Translations.ConfigurationScreen.CARTS_COLLIDE_WITH_ITEMS, "Carts collide with items");
+    this.add(Translations.ConfigurationScreen.LOCOMOTIVE_DAMAGE_MOBS, "Locomotive damage mobs");
+    this.add(Translations.ConfigurationScreen.LOCOMOTIVE_HORSEPOWER, "Locomotive horsepower");
+    this.add(Translations.ConfigurationScreen.SOLID_CARTS, "Solid Carts");
+    this.add(Translations.ConfigurationScreen.BORE_MINING_SPEED_MULTIPLIER,
+        "Bore mining speed multiplier");
+    this.add(Translations.ConfigurationScreen.BORE_DESTROYS_BLOCKS, "Bore destroys blocks");
+    this.add(Translations.ConfigurationScreen.BORE_MINES_ALL_BLOCKS, "Bore mines all blocks");
+    this.add(Translations.ConfigurationScreen.CARTS_BREAK_ON_DROP, "Carts break on drop");
+    this.add(Translations.ConfigurationScreen.STEAM_LOCOMOTIVE_EFFICIENCY,
+        "Steam Locomotive efficiency");
+    this.add(Translations.ConfigurationScreen.TANK_CART_FLUID_TRANSFER_RATE,
+        "Tank Cart fluid transfer rate");
+    this.add(Translations.ConfigurationScreen.TANK_CART_FLUID_CAPACITY, "Tank Cart fluid capacity");
+    this.add(Translations.ConfigurationScreen.TANK_STACKING_ENABLED, "Tank stacking enabled");
+    this.add(Translations.ConfigurationScreen.MAX_TANK_SIZE, "Max tank size");
+    this.add(Translations.ConfigurationScreen.TANK_CAPACITY_PER_BLOCK, "Tank capacity per block");
+    this.add(Translations.ConfigurationScreen.WATER_COLLECTION_RATE, "Water collection rate");
+    this.add(Translations.ConfigurationScreen.MAX_LAUNCHER_TRACK_FORCE,
+        "Max Launcher Track force");
+    this.add(Translations.ConfigurationScreen.CART_DISPENSER_DELAY, "Cart Dispenser delay");
+    this.add(Translations.ConfigurationScreen.CHANGE_DUNGEON_LOOT, "Change dungeon loot");
+    this.add(Translations.ConfigurationScreen.CHARGE, "Charge");
+    this.add(Translations.ConfigurationScreen.LOSS_MULTIPLIER, "Loss multiplier");
+    this.add(Translations.ConfigurationScreen.PREFERRED_ORES, "Preferred ores");
+    this.add(Translations.ConfigurationScreen.STEAM, "Steam");
+    this.add(Translations.ConfigurationScreen.FUEL_MULTIPLIER, "Fuel multiplier");
+    this.add(Translations.ConfigurationScreen.FUEL_PER_STEAM_MULTIPLIER,
+        "Fuel per steam multiplier");
   }
 
   private void addFluidType(Supplier<? extends FluidType> key, String name) {
