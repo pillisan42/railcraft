@@ -21,16 +21,11 @@ This project is maintained by:
 - [**Sm0keySa1m0n**](https://github.com/Sm0keySa1m0n)
 - [**Edivad99**](https://github.com/Edivad99)
 
-Thanks also to [LetterN](https://github.com/LetterN) who contributed in the early stages
-of development.
+Thanks also to [LetterN](https://github.com/LetterN) who contributed in the early stages of development.
 
 ## Official Links
 
 * [Discord](https://discord.gg/VyaUt2r)
-
-## Issues
-
-Post only confirmed bugs [here](https://github.com/railcraft-reborn/railcraft/issues).
 
 ## License
 

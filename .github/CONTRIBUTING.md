@@ -6,6 +6,7 @@ negative experiences all around when a change turns out to be controversial.
 
 Please adhere to the following guidlines when submitting pull requests:
 
+* Use the command `./gradlew spotlessApply` to format your code before submitting a pull request
 * Use the [Google style guide](https://github.com/google/styleguide)
 * Add `@Override` annotations where appropriate to make overrides explicitly clear
 * Rename semi-obfuscated variables (e.g. p_77624_1_) to meaningful names
@@ -21,9 +22,7 @@ if(foo){
   bar();
 }
 ```
-
 instead of
-
 ```java
 if(foo)
   bar();
@@ -47,7 +46,7 @@ Examples of non-constants:
 
 Requirements:
 
-- Java 17
+- Java 21
 - Git
 
 Railcraft follows standard NeoForged conventions for setting up and building a project.

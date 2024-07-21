@@ -8,19 +8,7 @@
 * The Railcraft Reborn API is not considered part of Railcraft Reborn and may be freely distributed
   and/or used as you see fit, according to the MIT License.
 
-* You may not use Railcraft Reborn to generate revenue for yourself except in the cases listed
-  below.
-
-    * You may not distribute modified versions of Railcraft Reborn.
-
-    * You may install Railcraft Reborn on multiplayer servers and are **ALLOWED** to earn revenue as
-      you desire from server usage fees, donations, sold services, or anything else you can come up
-      with.
-        * If you wish to create a **public** client bundle including Railcraft Reborn for your
-          users, you must follow the Public Mod Pack Restrictions below.
-        * **Private client bundles are permitted without requiring that you meet the restrictions on
-          Public Mod Packs, but they must be protected via password or white-list in such a way that
-          only server users are allowed to access it.**
+* You may not distribute modified versions of Railcraft Reborn.
 
 ## Derivatives
 
@@ -83,7 +71,7 @@
 
 ## Licensed by CovertJaguar
 Many of you will remember this mod from versions prior to 1.12.2.  
-For those who suspect that we are infringing on some Railcraft-related licence, we would like 
-to remind you that we have asked CovertJaguar for permission to publish this mod as Railcraft 
-Reborn.
+For those who suspect that we are violating a license related to Railcraft, we would like to inform
+you that we have asked CovertJaguar for permission to publish this mod under the name
+"Railcraft Reborn".
 ![CovertJaguar License](license_covertjaguar.jpg)
