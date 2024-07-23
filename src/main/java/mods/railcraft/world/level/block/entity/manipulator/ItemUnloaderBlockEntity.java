@@ -11,7 +11,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.capabilities.Capabilities;
 
 public class ItemUnloaderBlockEntity extends ItemManipulatorBlockEntity {
 
@@ -51,12 +50,11 @@ public class ItemUnloaderBlockEntity extends ItemManipulatorBlockEntity {
 
   @Override
   public boolean canHandleCart(AbstractMinecart cart) {
-    return super.canHandleCart(cart)
-        && Optional.ofNullable(cart
-          .getCapability(Capabilities.ItemHandler.ENTITY_AUTOMATION, this.getFacing().getOpposite())
-        ).map(ContainerManipulator::of)
-        .map(ContainerManipulator::hasItems)
-        .orElse(false);
+    return super.canHandleCart(cart) &&
+        Optional.ofNullable(getCartItemHandler(cart, this.getFacing().getOpposite()))
+            .map(ContainerManipulator::of)
+            .map(ContainerManipulator::hasItems)
+            .orElse(false);
   }
 
   private void clearContainer() {

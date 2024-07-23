@@ -39,7 +39,7 @@ public class FluidUnloaderBlockEntity extends FluidManipulatorBlockEntity {
 
   @Override
   protected void processCart(AbstractMinecart cart) {
-    IFluidHandler tankCart = getFluidHandler(cart, Direction.DOWN);
+    IFluidHandler tankCart = getCartFluidHandler(cart, Direction.DOWN);
     if (tankCart != null) {
       FluidStack moved = FluidUtil.tryFluidTransfer(tank, tankCart,
           RailcraftConfig.SERVER.tankCartFluidTransferRate.get(), true);
@@ -49,7 +49,7 @@ public class FluidUnloaderBlockEntity extends FluidManipulatorBlockEntity {
 
   @Override
   protected boolean hasWorkForCart(AbstractMinecart cart) {
-    IFluidHandler cartFluidHandler = getFluidHandler(cart, Direction.DOWN);
+    IFluidHandler cartFluidHandler = getCartFluidHandler(cart, Direction.DOWN);
     if (cartFluidHandler == null) {
       return false;
     }

@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
+import org.jetbrains.annotations.Nullable;
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
 import mods.railcraft.api.container.manipulator.ContainerManipulator;
@@ -14,10 +15,10 @@ import mods.railcraft.util.ItemStackKey;
 import mods.railcraft.util.container.AdvancedContainer;
 import mods.railcraft.util.container.ContainerManifest;
 import mods.railcraft.util.container.ContainerMapper;
-import mods.railcraft.util.container.ContainerTools;
 import mods.railcraft.util.container.StackFilter;
 import mods.railcraft.world.inventory.ItemManipulatorMenu;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -33,13 +34,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.items.IItemHandler;
 
 public abstract class ItemManipulatorBlockEntity extends ManipulatorBlockEntity
     implements MenuProvider {
 
   protected static final Map<TransferMode, Predicate<ItemManipulatorBlockEntity>> modeHasWork =
       new EnumMap<>(TransferMode.class);
-  protected static final int[] SLOTS = ContainerTools.buildSlotArray(0, 9);
   protected ContainerManipulator<?> cart;
 
   static {
@@ -52,9 +53,8 @@ public abstract class ItemManipulatorBlockEntity extends ManipulatorBlockEntity
     });
 
     modeHasWork.put(TransferMode.TRANSFER, tile -> {
-      ContainerManifest filterManifest = ContainerManifest.create(tile.getItemFilters());
-      ContainerManifest sourceManifest =
-          ContainerManifest.create(tile.getSource(), filterManifest.keySet());
+      var filterManifest = ContainerManifest.create(tile.getItemFilters());
+      var sourceManifest = ContainerManifest.create(tile.getSource(), filterManifest.keySet());
       var dest = tile.getDestination();
 
       return sourceManifest.values().stream()
@@ -65,10 +65,9 @@ public abstract class ItemManipulatorBlockEntity extends ManipulatorBlockEntity
 
     modeHasWork.put(TransferMode.STOCK, tile -> {
       var dest = tile.getDestination();
-      ContainerManifest filterManifest = ContainerManifest.create(tile.getItemFilters());
-      ContainerManifest sourceManifest =
-          ContainerManifest.create(tile.getSource(), filterManifest.keySet());
-      ContainerManifest destManifest = ContainerManifest.create(dest, filterManifest.keySet());
+      var filterManifest = ContainerManifest.create(tile.getItemFilters());
+      var sourceManifest = ContainerManifest.create(tile.getSource(), filterManifest.keySet());
+      var destManifest = ContainerManifest.create(dest, filterManifest.keySet());
 
       return sourceManifest.values().stream()
           .filter(entry -> dest.willAcceptAny(entry.stacks()))
@@ -77,15 +76,15 @@ public abstract class ItemManipulatorBlockEntity extends ManipulatorBlockEntity
 
     modeHasWork.put(TransferMode.EXCESS, tile -> {
       var dest = tile.getDestination();
-      ContainerManifest filterManifest = ContainerManifest.create(tile.getItemFilters());
-      ContainerManifest sourceManifest =
-          ContainerManifest.create(tile.getSource(), filterManifest.keySet());
+      var filterManifest = ContainerManifest.create(tile.getItemFilters());
+      var sourceManifest = ContainerManifest.create(tile.getSource(), filterManifest.keySet());
 
       if (filterManifest.values().stream()
-          .anyMatch(entry -> sourceManifest.count(entry.key()) > entry.count()))
+          .anyMatch(entry -> sourceManifest.count(entry.key()) > entry.count())) {
         return true;
+      }
 
-      ContainerManifest remainingManifest = ContainerManifest.create(tile.getSource());
+      var remainingManifest = ContainerManifest.create(tile.getSource());
       remainingManifest.keySet()
           .removeIf(stackKey -> StackFilter.anyMatch(tile.getItemFilters()).test(stackKey.itemStack()));
 
@@ -140,51 +139,53 @@ public abstract class ItemManipulatorBlockEntity extends ManipulatorBlockEntity
     this.transferredItems.clear();
   }
 
+  @Nullable
+  protected static IItemHandler getCartItemHandler(AbstractMinecart cart, Direction direction) {
+    return cart.getCapability(Capabilities.ItemHandler.ENTITY_AUTOMATION, direction);
+  }
+
   @Override
   protected void processCart(AbstractMinecart cart) {
     this.chests = ContainerManipulator.of(this.bufferContainer, this.findAdjacentContainers());
 
-    var cartInv = cart
-        .getCapability(Capabilities.ItemHandler.ENTITY_AUTOMATION, this.getFacing().getOpposite());
+    var cartInv = getCartItemHandler(cart, this.getFacing().getOpposite());
     if (cartInv == null) {
       sendCart(cart);
       return;
     }
     this.cart = ContainerManipulator.of(cartInv);
 
-    ContainerManifest filterManifest = ContainerManifest.create(getItemFilters());
-    Stream<ContainerManifest.ManifestEntry> manifestStream = filterManifest.values().stream();
-    switch (getTransferMode()) {
+    var filterManifest = ContainerManifest.create(this.getItemFilters());
+    var manifestStream = filterManifest.values().stream();
+    switch (this.getTransferMode()) {
       case ALL: {
         if (filterManifest.isEmpty()) {
-          ItemStack moved = getSource().moveOneItemTo(getDestination());
+          ItemStack moved = this.getSource().moveOneItemTo(this.getDestination());
           itemMoved(moved);
         } else {
-          moveItem(manifestStream);
+          this.moveItem(manifestStream);
         }
         break;
       }
       case TRANSFER: {
-        moveItem(
+        this.moveItem(
             manifestStream.filter(entry -> transferredItems.count(entry.key()) < entry.count()));
         break;
       }
       case STOCK: {
-        ContainerManifest destManifest =
-            ContainerManifest.create(getDestination(), filterManifest.keySet());
-        moveItem(manifestStream.filter(entry -> destManifest.count(entry.key()) < entry.count()));
+        var destManifest = ContainerManifest.create(this.getDestination(), filterManifest.keySet());
+        this.moveItem(manifestStream.filter(entry -> destManifest.count(entry.key()) < entry.count()));
         break;
       }
       case EXCESS: {
-        ContainerManifest sourceManifest =
-            ContainerManifest.create(getSource(), filterManifest.keySet());
+        var sourceManifest = ContainerManifest.create(this.getSource(), filterManifest.keySet());
 
         this.moveItem(
             manifestStream.filter(entry -> sourceManifest.count(entry.key()) > entry.count()));
-        if (!isProcessing()) {
+        if (!this.isProcessing()) {
           Predicate<ItemStack> canMove = StackFilter.anyMatch(filterManifest.keyStacks()).negate();
 
-          ItemStack moved = getSource().moveOneItemTo(this.getDestination(), canMove);
+          ItemStack moved = this.getSource().moveOneItemTo(this.getDestination(), canMove);
           this.itemMoved(moved);
         }
         break;
@@ -194,8 +195,7 @@ public abstract class ItemManipulatorBlockEntity extends ManipulatorBlockEntity
 
   @Override
   protected boolean hasWorkForCart(AbstractMinecart cart) {
-    var itemHandler = cart
-        .getCapability(Capabilities.ItemHandler.ENTITY_AUTOMATION, this.getFacing().getOpposite());
+    var itemHandler = getCartItemHandler(cart, this.getFacing().getOpposite());
     if (itemHandler == null) {
       return false;
     }
@@ -232,8 +232,7 @@ public abstract class ItemManipulatorBlockEntity extends ManipulatorBlockEntity
 
   @Override
   public boolean canHandleCart(AbstractMinecart cart) {
-    return Optional.ofNullable(cart
-        .getCapability(Capabilities.ItemHandler.ENTITY_AUTOMATION, this.getFacing().getOpposite()))
+    return Optional.ofNullable(getCartItemHandler(cart, this.getFacing().getOpposite()))
         .map(inventory -> inventory.getSlots() > 0).orElse(false)
         && super.canHandleCart(cart);
   }

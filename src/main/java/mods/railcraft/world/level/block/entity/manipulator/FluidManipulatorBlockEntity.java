@@ -79,7 +79,7 @@ public abstract class FluidManipulatorBlockEntity extends ManipulatorBlockEntity
   }
 
   @Nullable
-  protected static IFluidHandler getFluidHandler(AbstractMinecart cart, Direction direction) {
+  protected static IFluidHandler getCartFluidHandler(AbstractMinecart cart, Direction direction) {
     return cart.getCapability(Capabilities.FluidHandler.ENTITY, direction);
   }
 

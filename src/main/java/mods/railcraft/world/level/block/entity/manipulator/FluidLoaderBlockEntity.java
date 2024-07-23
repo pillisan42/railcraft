@@ -76,8 +76,8 @@ public class FluidLoaderBlockEntity extends FluidManipulatorBlockEntity {
   @Override
   protected void reset() {
     super.reset();
-    if (this.currentCart instanceof FluidTransferHandler) {
-      ((FluidTransferHandler) this.currentCart).setFilling(false);
+    if (this.currentCart instanceof FluidTransferHandler handler) {
+      handler.setFilling(false);
     }
   }
 
@@ -124,7 +124,7 @@ public class FluidLoaderBlockEntity extends FluidManipulatorBlockEntity {
       }
     }
 
-    IFluidHandler tankCart = getFluidHandler(cart, Direction.UP);
+    IFluidHandler tankCart = getCartFluidHandler(cart, Direction.UP);
     if (tankCart == null) {
       return;
     }
@@ -170,7 +170,7 @@ public class FluidLoaderBlockEntity extends FluidManipulatorBlockEntity {
     if (!this.isPipeRetracted()) {
       return true;
     }
-    IFluidHandler cartFluidHandler = getFluidHandler(cart, Direction.UP);
+    IFluidHandler cartFluidHandler = getCartFluidHandler(cart, Direction.UP);
     if (cartFluidHandler == null) {
       return false;
     }
