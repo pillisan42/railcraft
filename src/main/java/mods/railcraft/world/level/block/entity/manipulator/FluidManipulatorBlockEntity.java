@@ -179,7 +179,7 @@ public abstract class FluidManipulatorBlockEntity extends ManipulatorBlockEntity
     this.tankManager.readPacketData(data);
   }
 
-  public IFluidHandler getFluidCap(Direction side) {
+  public IFluidHandler getFluidCap(@Nullable Direction side) {
     return this.tankManager;
   }
 }

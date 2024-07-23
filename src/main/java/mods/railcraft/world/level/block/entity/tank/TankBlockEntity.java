@@ -175,7 +175,7 @@ public abstract class TankBlockEntity extends MultiblockBlockEntity<TankBlockEnt
     }
   }
 
-  public IFluidHandler getFluidCap(Direction side) {
+  public IFluidHandler getFluidCap(@Nullable Direction side) {
     return this.fluidHandler;
   }
 

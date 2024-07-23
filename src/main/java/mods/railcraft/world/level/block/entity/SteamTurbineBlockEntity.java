@@ -134,7 +134,8 @@ public class SteamTurbineBlockEntity extends MultiblockBlockEntity<SteamTurbineB
     this.masterOperatingRatio = in.readFloat();
   }
 
-  public IFluidHandler getFluidCap(Direction side) {
+  @Nullable
+  public IFluidHandler getFluidCap(@Nullable Direction side) {
     var masterModule = this.getMasterBlockEntity()
         .map(SteamTurbineBlockEntity::getSteamTurbineModule);
     return masterModule
@@ -142,7 +143,8 @@ public class SteamTurbineBlockEntity extends MultiblockBlockEntity<SteamTurbineB
         .orElse(null);
   }
 
-  public IEnergyStorage getEnergyCap(Direction side) {
+  @Nullable
+  public IEnergyStorage getEnergyCap(@Nullable Direction side) {
     var masterModule = this.getMasterBlockEntity()
         .map(SteamTurbineBlockEntity::getSteamTurbineModule);
     return masterModule

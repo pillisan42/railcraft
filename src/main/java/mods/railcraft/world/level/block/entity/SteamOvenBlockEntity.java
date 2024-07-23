@@ -137,7 +137,8 @@ public class SteamOvenBlockEntity extends MultiblockBlockEntity<SteamOvenBlockEn
     return Component.translatable(Container.STEAM_OVEN);
   }
 
-  public IItemHandler getItemCap(Direction side) {
+  @Nullable
+  public IItemHandler getItemCap(@Nullable Direction side) {
     var masterModule = this.getMasterBlockEntity()
         .map(SteamOvenBlockEntity::getSteamOvenModule);
     return masterModule
@@ -145,7 +146,8 @@ public class SteamOvenBlockEntity extends MultiblockBlockEntity<SteamOvenBlockEn
         .orElse(null);
   }
 
-  public IFluidHandler getFluidCap(Direction side) {
+  @Nullable
+  public IFluidHandler getFluidCap(@Nullable Direction side) {
     var masterModule = this.getMasterBlockEntity()
         .map(SteamOvenBlockEntity::getSteamOvenModule);
     return masterModule

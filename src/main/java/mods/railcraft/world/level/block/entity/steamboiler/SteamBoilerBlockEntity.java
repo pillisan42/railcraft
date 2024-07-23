@@ -76,11 +76,11 @@ public class SteamBoilerBlockEntity
             : super.use(player, hand);
   }
 
-  public IItemHandler getItemCap(Direction side) {
+  public IItemHandler getItemCap(@Nullable Direction side) {
     return this.itemHandler;
   }
 
-  public IFluidHandler getFluidCap(Direction side) {
+  public IFluidHandler getFluidCap(@Nullable Direction side) {
     return this.fluidHandler;
   }
 

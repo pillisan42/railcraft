@@ -122,7 +122,8 @@ public class BlastFurnaceBlockEntity extends MultiblockBlockEntity<BlastFurnaceB
     return Component.translatable(Translations.Container.BLAST_FURNACE);
   }
 
-  public IItemHandler getItemCap(Direction side) {
+  @Nullable
+  public IItemHandler getItemCap(@Nullable Direction side) {
     return this.getMasterBlockEntity()
         .map(BlastFurnaceBlockEntity::getBlastFurnaceModule)
         .map(BlastFurnaceModule::getItemHandler)

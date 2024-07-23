@@ -49,7 +49,7 @@ public class PoweredRollingMachineBlockEntity extends ManualRollingMachineBlockE
     return new PoweredRollingMachineMenu(containerId, inventory, this);
   }
 
-  public IItemHandler getItemCap(Direction side) {
+  public IItemHandler getItemCap(@Nullable Direction side) {
     return this.itemHandler;
   }
 }

@@ -85,7 +85,8 @@ public class WaterTankSidingBlockEntity extends MultiblockBlockEntity<WaterTankS
     return Component.translatable(Container.WATER_TANK_SIDING);
   }
 
-  public IFluidHandler getFluidCap(Direction side) {
+  @Nullable
+  public IFluidHandler getFluidCap(@Nullable Direction side) {
     return this.getMasterBlockEntity()
         .map(WaterTankSidingBlockEntity::getModule)
         .map(WaterCollectionModule::getTank)

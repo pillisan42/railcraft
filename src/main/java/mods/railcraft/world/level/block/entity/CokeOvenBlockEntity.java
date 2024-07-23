@@ -105,7 +105,8 @@ public class CokeOvenBlockEntity extends MultiblockBlockEntity<CokeOvenBlockEnti
     return Component.translatable(Translations.Container.COKE_OVEN);
   }
 
-  public IItemHandler getItemCap(Direction side) {
+  @Nullable
+  public IItemHandler getItemCap(@Nullable Direction side) {
     var masterModule = this.getMasterBlockEntity()
         .map(CokeOvenBlockEntity::getCokeOvenModule);
     return masterModule
@@ -113,7 +114,8 @@ public class CokeOvenBlockEntity extends MultiblockBlockEntity<CokeOvenBlockEnti
         .orElse(null);
   }
 
-  public IFluidHandler getFluidCap(Direction side) {
+  @Nullable
+  public IFluidHandler getFluidCap(@Nullable Direction side) {
     var masterModule = this.getMasterBlockEntity()
         .map(CokeOvenBlockEntity::getCokeOvenModule);
     return masterModule

@@ -150,7 +150,8 @@ public class CrusherBlockEntity extends MultiblockBlockEntity<CrusherBlockEntity
     return Component.translatable(Container.CRUSHER);
   }
 
-  public IItemHandler getItemCap(Direction side) {
+  @Nullable
+  public IItemHandler getItemCap(@Nullable Direction side) {
     var masterModule = this.getMasterBlockEntity()
         .map(CrusherBlockEntity::getCrusherModule);
     return masterModule
@@ -158,7 +159,8 @@ public class CrusherBlockEntity extends MultiblockBlockEntity<CrusherBlockEntity
         .orElse(null);
   }
 
-  public IEnergyStorage getEnergyCap(Direction side) {
+  @Nullable
+  public IEnergyStorage getEnergyCap(@Nullable Direction side) {
     var masterModule = this.getMasterBlockEntity()
         .map(CrusherBlockEntity::getCrusherModule);
     return masterModule
