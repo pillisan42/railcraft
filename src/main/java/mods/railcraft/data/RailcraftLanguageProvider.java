@@ -2,6 +2,7 @@ package mods.railcraft.data;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
+import org.apache.commons.lang3.StringUtils;
 import mods.railcraft.Translations;
 import mods.railcraft.api.core.RailcraftConstants;
 import mods.railcraft.util.VariantSet;
@@ -11,6 +12,7 @@ import mods.railcraft.world.entity.npc.RailcraftVillagerProfession;
 import mods.railcraft.world.entity.vehicle.MaintenanceMinecart;
 import mods.railcraft.world.item.RailcraftItems;
 import mods.railcraft.world.item.alchemy.RailcraftPotions;
+import mods.railcraft.world.level.block.DecorativeBlock;
 import mods.railcraft.world.level.block.RailcraftBlocks;
 import mods.railcraft.world.level.block.entity.manipulator.ManipulatorBlockEntity;
 import mods.railcraft.world.level.block.entity.track.CouplerTrackBlockEntity;
@@ -151,29 +153,30 @@ public class RailcraftLanguageProvider extends LanguageProvider {
     this.addBlock(RailcraftBlocks.CRUSHED_OBSIDIAN, "Crushed Obsidian");
     this.addBlock(RailcraftBlocks.WATER_TANK_SIDING, "Water Tank Siding");
 
-    this.addBlock(RailcraftBlocks.QUARRIED_STONE, "Quarried Stone");
-    this.addBlock(RailcraftBlocks.QUARRIED_COBBLESTONE, "Quarried Cobblestone");
-    this.addBlock(RailcraftBlocks.POLISHED_QUARRIED_STONE, "Polished Quarried Stone");
-    this.addBlock(RailcraftBlocks.CHISELED_QUARRIED_STONE, "Chiseled Quarried Stone");
-    this.addBlock(RailcraftBlocks.ETCHED_QUARRIED_STONE, "Etched Quarried Stone");
-    this.addBlock(RailcraftBlocks.QUARRIED_BRICKS, "Quarried Bricks");
-    this.addBlock(RailcraftBlocks.QUARRIED_BRICK_STAIRS, "Quarried Brick Stairs");
-    this.addBlock(RailcraftBlocks.QUARRIED_BRICK_SLAB, "Quarried Brick Slab");
-    this.addBlock(RailcraftBlocks.QUARRIED_PAVER, "Quarried Paver");
-    this.addBlock(RailcraftBlocks.QUARRIED_PAVER_STAIRS, "Quarried Paver Stairs");
-    this.addBlock(RailcraftBlocks.QUARRIED_PAVER_SLAB, "Quarried Paver Slab");
-
-    this.addBlock(RailcraftBlocks.ABYSSAL_STONE, "Abyssal Stone");
-    this.addBlock(RailcraftBlocks.ABYSSAL_COBBLESTONE, "Abyssal Cobblestone");
-    this.addBlock(RailcraftBlocks.POLISHED_ABYSSAL_STONE, "Polished Abyssal Stone");
-    this.addBlock(RailcraftBlocks.CHISELED_ABYSSAL_STONE, "Chiseled Abyssal Stone");
-    this.addBlock(RailcraftBlocks.ETCHED_ABYSSAL_STONE, "Etched Abyssal Stone");
-    this.addBlock(RailcraftBlocks.ABYSSAL_BRICKS, "Abyssal Bricks");
-    this.addBlock(RailcraftBlocks.ABYSSAL_BRICK_STAIRS, "Abyssal Brick Stairs");
-    this.addBlock(RailcraftBlocks.ABYSSAL_BRICK_SLAB, "Abyssal Brick Slab");
-    this.addBlock(RailcraftBlocks.ABYSSAL_PAVER, "Abyssal Paver");
-    this.addBlock(RailcraftBlocks.ABYSSAL_PAVER_STAIRS, "Abyssal Paver Stairs");
-    this.addBlock(RailcraftBlocks.ABYSSAL_PAVER_SLAB, "Abyssal Paver Slab");
+    for (var type : DecorativeBlock.values()) {
+      this.addBlock(RailcraftBlocks.DECORATIVE_STONE.variantFor(type),
+          StringUtils.capitalize(type.getSerializedName()) + " Stone");
+      this.addBlock(RailcraftBlocks.DECORATIVE_COBBLESTONE.variantFor(type),
+          StringUtils.capitalize(type.getSerializedName()) + " Cobblestone");
+      this.addBlock(RailcraftBlocks.POLISHED_DECORATIVE_STONE.variantFor(type),
+          "Polished " + StringUtils.capitalize(type.getSerializedName()) + " Stone");
+      this.addBlock(RailcraftBlocks.CHISELED_DECORATIVE_STONE.variantFor(type),
+          "Chiseled " + StringUtils.capitalize(type.getSerializedName()) + " Stone");
+      this.addBlock(RailcraftBlocks.ETCHED_DECORATIVE_STONE.variantFor(type),
+          "Etched " + StringUtils.capitalize(type.getSerializedName()) + " Stone");
+      this.addBlock(RailcraftBlocks.DECORATIVE_BRICKS.variantFor(type),
+          StringUtils.capitalize(type.getSerializedName()) + " Bricks");
+      this.addBlock(RailcraftBlocks.DECORATIVE_BRICK_STAIRS.variantFor(type),
+          StringUtils.capitalize(type.getSerializedName()) + " Brick Stairs");
+      this.addBlock(RailcraftBlocks.DECORATIVE_BRICK_SLAB.variantFor(type),
+          StringUtils.capitalize(type.getSerializedName()) + " Brick Slab");
+      this.addBlock(RailcraftBlocks.DECORATIVE_PAVER.variantFor(type),
+          StringUtils.capitalize(type.getSerializedName()) + " Paver");
+      this.addBlock(RailcraftBlocks.DECORATIVE_PAVER_STAIRS.variantFor(type),
+          StringUtils.capitalize(type.getSerializedName()) + " Paver Stairs");
+      this.addBlock(RailcraftBlocks.DECORATIVE_PAVER_SLAB.variantFor(type),
+          StringUtils.capitalize(type.getSerializedName()) + " Paver Slab");
+    }
 
     this.addBlock(RailcraftBlocks.WORLD_SPIKE, "Worldspike");
     this.addBlock(RailcraftBlocks.PERSONAL_WORLD_SPIKE, "Personal Worldspike");

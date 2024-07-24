@@ -4,6 +4,7 @@ import java.util.concurrent.CompletableFuture;
 import mods.railcraft.data.recipes.builders.CrusherRecipeBuilder;
 import mods.railcraft.tags.RailcraftTags;
 import mods.railcraft.world.item.RailcraftItems;
+import mods.railcraft.world.level.block.DecorativeBlock;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -228,27 +229,24 @@ public class CrusherRecipeProvider extends RecipeProvider {
         .addResult(RailcraftItems.RAW_FIRESTONE, 1, 1)
         .save(recipeOutput);
     CrusherRecipeBuilder.crush(RailcraftTags.Items.QUARRIED)
-        .addResult(RailcraftItems.QUARRIED_COBBLESTONE, 1, 1)
-        .save(recipeOutput);
-    CrusherRecipeBuilder.crush(Ingredient.of(RailcraftItems.QUARRIED_BRICK_STAIRS,
-            RailcraftItems.QUARRIED_PAVER_STAIRS))
-        .addResult(RailcraftItems.QUARRIED_COBBLESTONE, 1, 0.75)
-        .save(recipeOutput);
-    CrusherRecipeBuilder.crush(Ingredient.of(RailcraftItems.QUARRIED_BRICK_SLAB,
-            RailcraftItems.QUARRIED_PAVER_SLAB))
-        .addResult(RailcraftItems.QUARRIED_COBBLESTONE, 1, 0.5)
+        .addResult(RailcraftItems.DECORATIVE_COBBLESTONE
+            .variantFor(DecorativeBlock.QUARRIED).get(), 1, 1)
         .save(recipeOutput);
     CrusherRecipeBuilder.crush(RailcraftTags.Items.ABYSSAL)
-        .addResult(RailcraftItems.ABYSSAL_COBBLESTONE, 1, 1)
+        .addResult(RailcraftItems.DECORATIVE_COBBLESTONE
+            .variantFor(DecorativeBlock.ABYSSAL).get(), 1, 1)
         .save(recipeOutput);
-    CrusherRecipeBuilder.crush(Ingredient.of(RailcraftItems.ABYSSAL_BRICK_STAIRS,
-            RailcraftItems.ABYSSAL_PAVER_STAIRS))
-        .addResult(RailcraftItems.ABYSSAL_COBBLESTONE, 1, 0.75)
-        .save(recipeOutput);
-    CrusherRecipeBuilder.crush(Ingredient.of(RailcraftItems.ABYSSAL_BRICK_SLAB,
-            RailcraftItems.ABYSSAL_PAVER_SLAB))
-        .addResult(RailcraftItems.ABYSSAL_COBBLESTONE, 1, 0.5)
-        .save(recipeOutput);
+    for (var type : DecorativeBlock.values()) {
+      CrusherRecipeBuilder.crush(Ingredient.of(
+              RailcraftItems.DECORATIVE_BRICK_STAIRS.variantFor(type).get(),
+              RailcraftItems.DECORATIVE_PAVER_STAIRS.variantFor(type).get()))
+          .addResult(RailcraftItems.DECORATIVE_COBBLESTONE.variantFor(type).get(), 1, 0.75)
+          .save(recipeOutput);
+      CrusherRecipeBuilder.crush(Ingredient.of(RailcraftItems.DECORATIVE_BRICK_SLAB.variantFor(type).get(),
+              RailcraftItems.DECORATIVE_PAVER_SLAB.variantFor(type).get()))
+          .addResult(RailcraftItems.DECORATIVE_COBBLESTONE.variantFor(type).get(), 1, 0.5)
+          .save(recipeOutput);
+    }
     CrusherRecipeBuilder.crush(Ingredient.of(RailcraftItems.ZINC_SILVER_BATTERY_EMPTY,
             RailcraftItems.ZINC_CARBON_BATTERY_EMPTY))
         .addResult(RailcraftItems.CHARGE_TERMINAL, 2, 1)

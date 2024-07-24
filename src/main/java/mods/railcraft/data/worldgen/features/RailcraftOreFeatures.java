@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 import com.google.common.base.Suppliers;
 import mods.railcraft.api.core.RailcraftConstants;
 import mods.railcraft.tags.RailcraftTags;
+import mods.railcraft.world.level.block.DecorativeBlock;
 import mods.railcraft.world.level.block.RailcraftBlocks;
 import mods.railcraft.world.level.levelgen.feature.RailcraftFeatures;
 import mods.railcraft.world.level.levelgen.feature.configuration.QuarriedConfiguration;
@@ -123,7 +124,7 @@ public class RailcraftOreFeatures {
     context.register(QUARRIED_STONE, new ConfiguredFeature<>(RailcraftFeatures.QUARRIED_STONE.get(),
         new QuarriedConfiguration(
             QUARRIED_REPLACEABLE_BLOCKS,
-            BlockStateProvider.simple(RailcraftBlocks.QUARRIED_STONE.get()))));
+            BlockStateProvider.simple(RailcraftBlocks.DECORATIVE_STONE.variantFor(DecorativeBlock.QUARRIED).get()))));
     context.register(SALTPETER, new ConfiguredFeature<>(Feature.DISK,
         new DiskConfiguration(
             RuleBasedBlockStateProvider.simple(RailcraftBlocks.SALTPETER_ORE.get()),

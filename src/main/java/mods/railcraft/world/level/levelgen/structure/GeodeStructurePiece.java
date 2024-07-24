@@ -1,5 +1,6 @@
 package mods.railcraft.world.level.levelgen.structure;
 
+import mods.railcraft.world.level.block.DecorativeBlock;
 import mods.railcraft.world.level.block.RailcraftBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -71,13 +72,13 @@ public class GeodeStructurePiece extends StructurePiece {
         ? random.nextBoolean()
           ? Blocks.DEEPSLATE.defaultBlockState()
           : Blocks.SMOOTH_BASALT.defaultBlockState()
-        : RailcraftBlocks.ABYSSAL_STONE.get().defaultBlockState();
+        : RailcraftBlocks.DECORATIVE_STONE.variantFor(DecorativeBlock.ABYSSAL).get().defaultBlockState();
     this.placeBlock(level, state, pos.getX(), pos.getY(), pos.getZ(), this.getBoundingBox());
   }
 
   private void placeOre(WorldGenLevel level, BlockState existingState, RandomSource random,
       BlockPos pos) {
-    if (existingState.is(RailcraftBlocks.ABYSSAL_STONE.get())) {
+    if (existingState.is(RailcraftBlocks.DECORATIVE_STONE.variantFor(DecorativeBlock.ABYSSAL).get())) {
       double chance = random.nextDouble();
       BlockState oreState = null;
       if (chance <= 0.004) {

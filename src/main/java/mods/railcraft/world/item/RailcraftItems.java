@@ -17,6 +17,7 @@ import mods.railcraft.world.item.component.RoutingTableBookContent;
 import mods.railcraft.world.item.component.SeasonComponent;
 import mods.railcraft.world.item.tunnelbore.TunnelBoreHeadItem;
 import mods.railcraft.world.item.tunnelbore.TunnelBoreItem;
+import mods.railcraft.world.level.block.DecorativeBlock;
 import mods.railcraft.world.level.block.RailcraftBlocks;
 import mods.railcraft.world.level.block.track.TrackTypes;
 import mods.railcraft.world.level.material.RailcraftFluids;
@@ -1332,71 +1333,82 @@ public class RailcraftItems {
   public static final DeferredItem<BlockItem> WATER_TANK_SIDING =
       blockItem(RailcraftBlocks.WATER_TANK_SIDING);
 
-  public static final DeferredItem<BlockItem> QUARRIED_STONE =
-      blockItem(RailcraftBlocks.QUARRIED_STONE);
+  public static final VariantSet<DecorativeBlock, Item, BlockItem> DECORATIVE_STONE =
+      VariantSet.ofMapped(
+          DecorativeBlock.class,
+          deferredRegister,
+          RailcraftBlocks.DECORATIVE_STONE,
+          BLOCK_TO_BLOCK_ITEM);
 
-  public static final DeferredItem<BlockItem> QUARRIED_COBBLESTONE =
-      blockItem(RailcraftBlocks.QUARRIED_COBBLESTONE);
+  public static final VariantSet<DecorativeBlock, Item, BlockItem> DECORATIVE_COBBLESTONE =
+      VariantSet.ofMapped(
+          DecorativeBlock.class,
+          deferredRegister,
+          RailcraftBlocks.DECORATIVE_COBBLESTONE,
+          BLOCK_TO_BLOCK_ITEM);
 
-  public static final DeferredItem<BlockItem> POLISHED_QUARRIED_STONE =
-      blockItem(RailcraftBlocks.POLISHED_QUARRIED_STONE);
+  public static final VariantSet<DecorativeBlock, Item, BlockItem> POLISHED_DECORATIVE_STONE =
+      VariantSet.ofMapped(
+          DecorativeBlock.class,
+          deferredRegister,
+          RailcraftBlocks.POLISHED_DECORATIVE_STONE,
+          BLOCK_TO_BLOCK_ITEM);
 
-  public static final DeferredItem<BlockItem> CHISELED_QUARRIED_STONE =
-      blockItem(RailcraftBlocks.CHISELED_QUARRIED_STONE);
+  public static final VariantSet<DecorativeBlock, Item, BlockItem> CHISELED_DECORATIVE_STONE =
+      VariantSet.ofMapped(
+          DecorativeBlock.class,
+          deferredRegister,
+          RailcraftBlocks.CHISELED_DECORATIVE_STONE,
+          BLOCK_TO_BLOCK_ITEM);
 
-  public static final DeferredItem<BlockItem> ETCHED_QUARRIED_STONE =
-      blockItem(RailcraftBlocks.ETCHED_QUARRIED_STONE);
+  public static final VariantSet<DecorativeBlock, Item, BlockItem> ETCHED_DECORATIVE_STONE =
+      VariantSet.ofMapped(
+          DecorativeBlock.class,
+          deferredRegister,
+          RailcraftBlocks.ETCHED_DECORATIVE_STONE,
+          BLOCK_TO_BLOCK_ITEM);
 
-  public static final DeferredItem<BlockItem> QUARRIED_BRICKS =
-      blockItem(RailcraftBlocks.QUARRIED_BRICKS);
+  public static final VariantSet<DecorativeBlock, Item, BlockItem> DECORATIVE_BRICKS =
+      VariantSet.ofMapped(
+          DecorativeBlock.class,
+          deferredRegister,
+          RailcraftBlocks.DECORATIVE_BRICKS,
+          BLOCK_TO_BLOCK_ITEM);
 
-  public static final DeferredItem<BlockItem> QUARRIED_BRICK_STAIRS =
-      blockItem(RailcraftBlocks.QUARRIED_BRICK_STAIRS);
+  public static final VariantSet<DecorativeBlock, Item, BlockItem> DECORATIVE_BRICK_STAIRS =
+      VariantSet.ofMapped(
+          DecorativeBlock.class,
+          deferredRegister,
+          RailcraftBlocks.DECORATIVE_BRICK_STAIRS,
+          BLOCK_TO_BLOCK_ITEM);
 
-  public static final DeferredItem<BlockItem> QUARRIED_BRICK_SLAB =
-      blockItem(RailcraftBlocks.QUARRIED_BRICK_SLAB);
+  public static final VariantSet<DecorativeBlock, Item, BlockItem> DECORATIVE_BRICK_SLAB =
+      VariantSet.ofMapped(
+          DecorativeBlock.class,
+          deferredRegister,
+          RailcraftBlocks.DECORATIVE_BRICK_SLAB,
+          BLOCK_TO_BLOCK_ITEM);
 
-  public static final DeferredItem<BlockItem> QUARRIED_PAVER =
-      blockItem(RailcraftBlocks.QUARRIED_PAVER);
+  public static final VariantSet<DecorativeBlock, Item, BlockItem> DECORATIVE_PAVER =
+      VariantSet.ofMapped(
+          DecorativeBlock.class,
+          deferredRegister,
+          RailcraftBlocks.DECORATIVE_PAVER,
+          BLOCK_TO_BLOCK_ITEM);
 
-  public static final DeferredItem<BlockItem> QUARRIED_PAVER_STAIRS =
-      blockItem(RailcraftBlocks.QUARRIED_PAVER_STAIRS);
+  public static final VariantSet<DecorativeBlock, Item, BlockItem> DECORATIVE_PAVER_STAIRS =
+      VariantSet.ofMapped(
+          DecorativeBlock.class,
+          deferredRegister,
+          RailcraftBlocks.DECORATIVE_PAVER_STAIRS,
+          BLOCK_TO_BLOCK_ITEM);
 
-  public static final DeferredItem<BlockItem> QUARRIED_PAVER_SLAB =
-      blockItem(RailcraftBlocks.QUARRIED_PAVER_SLAB);
-
-  public static final DeferredItem<BlockItem> ABYSSAL_STONE =
-      blockItem(RailcraftBlocks.ABYSSAL_STONE);
-
-  public static final DeferredItem<BlockItem> ABYSSAL_COBBLESTONE =
-      blockItem(RailcraftBlocks.ABYSSAL_COBBLESTONE);
-
-  public static final DeferredItem<BlockItem> POLISHED_ABYSSAL_STONE =
-      blockItem(RailcraftBlocks.POLISHED_ABYSSAL_STONE);
-
-  public static final DeferredItem<BlockItem> CHISELED_ABYSSAL_STONE =
-      blockItem(RailcraftBlocks.CHISELED_ABYSSAL_STONE);
-
-  public static final DeferredItem<BlockItem> ETCHED_ABYSSAL_STONE =
-      blockItem(RailcraftBlocks.ETCHED_ABYSSAL_STONE);
-
-  public static final DeferredItem<BlockItem> ABYSSAL_BRICKS =
-      blockItem(RailcraftBlocks.ABYSSAL_BRICKS);
-
-  public static final DeferredItem<BlockItem> ABYSSAL_BRICK_STAIRS =
-      blockItem(RailcraftBlocks.ABYSSAL_BRICK_STAIRS);
-
-  public static final DeferredItem<BlockItem> ABYSSAL_BRICK_SLAB =
-      blockItem(RailcraftBlocks.ABYSSAL_BRICK_SLAB);
-
-  public static final DeferredItem<BlockItem> ABYSSAL_PAVER =
-      blockItem(RailcraftBlocks.ABYSSAL_PAVER);
-
-  public static final DeferredItem<BlockItem> ABYSSAL_PAVER_STAIRS =
-      blockItem(RailcraftBlocks.ABYSSAL_PAVER_STAIRS);
-
-  public static final DeferredItem<BlockItem> ABYSSAL_PAVER_SLAB =
-      blockItem(RailcraftBlocks.ABYSSAL_PAVER_SLAB);
+  public static final VariantSet<DecorativeBlock, Item, BlockItem> DECORATIVE_PAVER_SLAB =
+      VariantSet.ofMapped(
+          DecorativeBlock.class,
+          deferredRegister,
+          RailcraftBlocks.DECORATIVE_PAVER_SLAB,
+          BLOCK_TO_BLOCK_ITEM);
 
   public static final DeferredItem<BucketItem> CREOSOTE_BUCKET =
       deferredRegister.registerItem("creosote_bucket", properties ->

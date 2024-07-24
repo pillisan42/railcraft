@@ -2,6 +2,7 @@ package mods.railcraft.data.loot.packs;
 
 import java.util.Set;
 import mods.railcraft.world.item.RailcraftItems;
+import mods.railcraft.world.level.block.DecorativeBlock;
 import mods.railcraft.world.level.block.RailcraftBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -103,29 +104,21 @@ public class RailcraftBlockLoot extends BlockLootSubProvider {
         block -> this.createOreDrop(block, RailcraftItems.ZINC_RAW.get()));
     this.dropSelf(RailcraftBlocks.FIRESTONE_ORE.get());
 
-    this.dropSelf(RailcraftBlocks.QUARRIED_STONE.get());
-    this.dropSelf(RailcraftBlocks.QUARRIED_COBBLESTONE.get());
-    this.dropSelf(RailcraftBlocks.POLISHED_QUARRIED_STONE.get());
-    this.dropSelf(RailcraftBlocks.CHISELED_QUARRIED_STONE.get());
-    this.dropSelf(RailcraftBlocks.ETCHED_QUARRIED_STONE.get());
-    this.dropSelf(RailcraftBlocks.QUARRIED_BRICKS.get());
-    this.dropSelf(RailcraftBlocks.QUARRIED_BRICK_STAIRS.get());
-    this.dropSelf(RailcraftBlocks.QUARRIED_PAVER.get());
-    this.dropSelf(RailcraftBlocks.QUARRIED_PAVER_STAIRS.get());
-    this.add(RailcraftBlocks.QUARRIED_BRICK_SLAB.get(), this::createSlabItemTable);
-    this.add(RailcraftBlocks.QUARRIED_PAVER_SLAB.get(), this::createSlabItemTable);
-
-    this.dropSelf(RailcraftBlocks.ABYSSAL_STONE.get());
-    this.dropSelf(RailcraftBlocks.ABYSSAL_COBBLESTONE.get());
-    this.dropSelf(RailcraftBlocks.POLISHED_ABYSSAL_STONE.get());
-    this.dropSelf(RailcraftBlocks.CHISELED_ABYSSAL_STONE.get());
-    this.dropSelf(RailcraftBlocks.ETCHED_ABYSSAL_STONE.get());
-    this.dropSelf(RailcraftBlocks.ABYSSAL_BRICKS.get());
-    this.dropSelf(RailcraftBlocks.ABYSSAL_BRICK_STAIRS.get());
-    this.dropSelf(RailcraftBlocks.ABYSSAL_PAVER.get());
-    this.dropSelf(RailcraftBlocks.ABYSSAL_PAVER_STAIRS.get());
-    this.add(RailcraftBlocks.ABYSSAL_BRICK_SLAB.get(), this::createSlabItemTable);
-    this.add(RailcraftBlocks.ABYSSAL_PAVER_SLAB.get(), this::createSlabItemTable);
+    for (var type : DecorativeBlock.values()) {
+      this.dropSelf(RailcraftBlocks.DECORATIVE_STONE.variantFor(type).get());
+      this.dropSelf(RailcraftBlocks.DECORATIVE_COBBLESTONE.variantFor(type).get());
+      this.dropSelf(RailcraftBlocks.POLISHED_DECORATIVE_STONE.variantFor(type).get());
+      this.dropSelf(RailcraftBlocks.CHISELED_DECORATIVE_STONE.variantFor(type).get());
+      this.dropSelf(RailcraftBlocks.ETCHED_DECORATIVE_STONE.variantFor(type).get());
+      this.dropSelf(RailcraftBlocks.DECORATIVE_BRICKS.variantFor(type).get());
+      this.dropSelf(RailcraftBlocks.DECORATIVE_BRICK_STAIRS.variantFor(type).get());
+      this.dropSelf(RailcraftBlocks.DECORATIVE_PAVER.variantFor(type).get());
+      this.dropSelf(RailcraftBlocks.DECORATIVE_PAVER_STAIRS.variantFor(type).get());
+      this.add(RailcraftBlocks.DECORATIVE_BRICK_SLAB.variantFor(type).get(),
+          this::createSlabItemTable);
+      this.add(RailcraftBlocks.DECORATIVE_PAVER_SLAB.variantFor(type).get(),
+          this::createSlabItemTable);
+    }
 
     this.add(RailcraftBlocks.SULFUR_ORE.get(),
         block -> this.createOreDrop(block, RailcraftItems.SULFUR_DUST.get(), 2, 5));

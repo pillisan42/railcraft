@@ -10,6 +10,7 @@ import mods.railcraft.world.entity.vehicle.locomotive.Locomotive;
 import mods.railcraft.world.level.block.AbstractStrengthenedGlassBlock;
 import mods.railcraft.world.level.block.ChimneyBlock;
 import mods.railcraft.world.level.block.CrusherMultiblockBlock;
+import mods.railcraft.world.level.block.DecorativeBlock;
 import mods.railcraft.world.level.block.ForceTrackEmitterBlock;
 import mods.railcraft.world.level.block.FurnaceMultiblockBlock;
 import mods.railcraft.world.level.block.LogBookBlock;
@@ -275,37 +276,23 @@ public class RailcraftBlockModelProvider extends BlockStateProvider {
     this.simpleBlock(RailcraftBlocks.SALTPETER_ORE.get());
     this.simpleBlock(RailcraftBlocks.FIRESTONE_ORE.get());
 
-    this.simpleBlock(RailcraftBlocks.QUARRIED_STONE.get());
-    this.simpleBlock(RailcraftBlocks.QUARRIED_COBBLESTONE.get());
-    this.simpleBlock(RailcraftBlocks.POLISHED_QUARRIED_STONE.get());
-    this.simpleBlock(RailcraftBlocks.CHISELED_QUARRIED_STONE.get());
-    this.simpleBlock(RailcraftBlocks.ETCHED_QUARRIED_STONE.get());
-    this.simpleBlock(RailcraftBlocks.QUARRIED_BRICKS.get());
-    this.simpleBlock(RailcraftBlocks.QUARRIED_PAVER.get());
-    this.simpleStairsBlock(RailcraftBlocks.QUARRIED_BRICK_STAIRS.get(),
-        RailcraftBlocks.QUARRIED_BRICKS.get());
-    this.simpleStairsBlock(RailcraftBlocks.QUARRIED_PAVER_STAIRS.get(),
-        RailcraftBlocks.QUARRIED_PAVER.get());
-    this.simpleSlabBlock(RailcraftBlocks.QUARRIED_BRICK_SLAB.get(),
-        RailcraftBlocks.QUARRIED_BRICKS.get());
-    this.simpleSlabBlock(RailcraftBlocks.QUARRIED_PAVER_SLAB.get(),
-        RailcraftBlocks.QUARRIED_PAVER.get());
-
-    this.simpleBlock(RailcraftBlocks.ABYSSAL_STONE.get());
-    this.simpleBlock(RailcraftBlocks.ABYSSAL_COBBLESTONE.get());
-    this.simpleBlock(RailcraftBlocks.POLISHED_ABYSSAL_STONE.get());
-    this.simpleBlock(RailcraftBlocks.CHISELED_ABYSSAL_STONE.get());
-    this.simpleBlock(RailcraftBlocks.ETCHED_ABYSSAL_STONE.get());
-    this.simpleBlock(RailcraftBlocks.ABYSSAL_BRICKS.get());
-    this.simpleBlock(RailcraftBlocks.ABYSSAL_PAVER.get());
-    this.simpleStairsBlock(RailcraftBlocks.ABYSSAL_BRICK_STAIRS.get(),
-        RailcraftBlocks.ABYSSAL_BRICKS.get());
-    this.simpleStairsBlock(RailcraftBlocks.ABYSSAL_PAVER_STAIRS.get(),
-        RailcraftBlocks.ABYSSAL_PAVER.get());
-    this.simpleSlabBlock(RailcraftBlocks.ABYSSAL_BRICK_SLAB.get(),
-        RailcraftBlocks.ABYSSAL_BRICKS.get());
-    this.simpleSlabBlock(RailcraftBlocks.ABYSSAL_PAVER_SLAB.get(),
-        RailcraftBlocks.ABYSSAL_PAVER.get());
+    for (var type : DecorativeBlock.values()) {
+      this.simpleBlock(RailcraftBlocks.DECORATIVE_STONE.variantFor(type).get());
+      this.simpleBlock(RailcraftBlocks.DECORATIVE_COBBLESTONE.variantFor(type).get());
+      this.simpleBlock(RailcraftBlocks.POLISHED_DECORATIVE_STONE.variantFor(type).get());
+      this.simpleBlock(RailcraftBlocks.CHISELED_DECORATIVE_STONE.variantFor(type).get());
+      this.simpleBlock(RailcraftBlocks.ETCHED_DECORATIVE_STONE.variantFor(type).get());
+      this.simpleBlock(RailcraftBlocks.DECORATIVE_BRICKS.variantFor(type).get());
+      this.simpleStairsBlock(RailcraftBlocks.DECORATIVE_BRICK_STAIRS.variantFor(type).get(),
+          RailcraftBlocks.DECORATIVE_BRICKS.variantFor(type).get());
+      this.simpleBlock(RailcraftBlocks.DECORATIVE_PAVER.variantFor(type).get());
+      this.simpleStairsBlock(RailcraftBlocks.DECORATIVE_PAVER_STAIRS.variantFor(type).get(),
+          RailcraftBlocks.DECORATIVE_PAVER.variantFor(type).get());
+      this.simpleSlabBlock(RailcraftBlocks.DECORATIVE_BRICK_SLAB.variantFor(type).get(),
+          RailcraftBlocks.DECORATIVE_BRICKS.variantFor(type).get());
+      this.simpleSlabBlock(RailcraftBlocks.DECORATIVE_PAVER_SLAB.variantFor(type).get(),
+          RailcraftBlocks.DECORATIVE_PAVER.variantFor(type).get());
+    }
 
     this.fluidBlock(RailcraftBlocks.CREOSOTE.get());
 

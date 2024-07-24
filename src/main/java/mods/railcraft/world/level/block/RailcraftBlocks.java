@@ -135,52 +135,52 @@ public class RailcraftBlocks {
       VariantSet.of(
           DyeColor.class,
           deferredRegister,
-          "strengthened_glass",
+          "%s_strengthened_glass",
           RailcraftBlocks::buildStrengthenedGlass);
   public static final VariantSet<DyeColor, Block, IronTankGaugeBlock> IRON_TANK_GAUGE =
       VariantSet.of(
           DyeColor.class,
           deferredRegister,
-          "iron_tank_gauge",
+          "%s_iron_tank_gauge",
           RailcraftBlocks::buildIronTankGauge);
   public static final VariantSet<DyeColor, Block, IronTankValveBlock> IRON_TANK_VALVE =
       VariantSet.of(
           DyeColor.class,
           deferredRegister,
-          "iron_tank_valve",
+          "%s_iron_tank_valve",
           RailcraftBlocks::buildIronTankValve);
   public static final VariantSet<DyeColor, Block, IronTankWallBlock> IRON_TANK_WALL =
       VariantSet.of(
           DyeColor.class,
           deferredRegister,
-          "iron_tank_wall",
+          "%s_iron_tank_wall",
           RailcraftBlocks::buildIronTankWall);
   public static final VariantSet<DyeColor, Block, SteelTankGaugeBlock> STEEL_TANK_GAUGE =
       VariantSet.of(
           DyeColor.class,
           deferredRegister,
-          "steel_tank_gauge",
+          "%s_steel_tank_gauge",
           RailcraftBlocks::buildSteelTankGauge);
   public static final VariantSet<DyeColor, Block, SteelTankValveBlock> STEEL_TANK_VALVE =
       VariantSet.of(
           DyeColor.class,
           deferredRegister,
-          "steel_tank_valve",
+          "%s_steel_tank_valve",
           RailcraftBlocks::buildSteelTankValve);
   public static final VariantSet<DyeColor, Block, SteelTankWallBlock> STEEL_TANK_WALL =
       VariantSet.of(
           DyeColor.class,
           deferredRegister,
-          "steel_tank_wall",
+          "%s_steel_tank_wall",
           RailcraftBlocks::buildSteelTankWall);
   public static final VariantSet<DyeColor, Block, PostBlock> POST =
       VariantSet.of(
           DyeColor.class,
           deferredRegister,
-          "post",
+          "%s_post",
           RailcraftBlocks::buildPost);
 
-  private static StrengthenedGlassBlock buildStrengthenedGlass() {
+  private static StrengthenedGlassBlock buildStrengthenedGlass(DyeColor color) {
     return new StrengthenedGlassBlock(BlockBehaviour.Properties.of()
         .instrument(NoteBlockInstrument.HAT)
         .sound(SoundType.GLASS)
@@ -193,7 +193,7 @@ public class RailcraftBlocks {
         .isViewBlocking(RailcraftBlocks::never));
   }
 
-  private static IronTankGaugeBlock buildIronTankGauge() {
+  private static IronTankGaugeBlock buildIronTankGauge(DyeColor color) {
     return new IronTankGaugeBlock(BlockBehaviour.Properties.of()
         .instrument(NoteBlockInstrument.HAT)
         .sound(SoundType.GLASS)
@@ -207,7 +207,7 @@ public class RailcraftBlocks {
         .lightLevel(LightBlock.LIGHT_EMISSION));
   }
 
-  private static IronTankValveBlock buildIronTankValve() {
+  private static IronTankValveBlock buildIronTankValve(DyeColor color) {
     return new IronTankValveBlock(BlockBehaviour.Properties.of()
         .mapColor(MapColor.METAL)
         .sound(SoundType.METAL)
@@ -218,7 +218,7 @@ public class RailcraftBlocks {
         .explosionResistance(12));
   }
 
-  private static IronTankWallBlock buildIronTankWall() {
+  private static IronTankWallBlock buildIronTankWall(DyeColor color) {
     return new IronTankWallBlock(BlockBehaviour.Properties.of()
         .mapColor(MapColor.METAL)
         .sound(SoundType.METAL)
@@ -229,7 +229,7 @@ public class RailcraftBlocks {
         .explosionResistance(12));
   }
 
-  private static SteelTankGaugeBlock buildSteelTankGauge() {
+  private static SteelTankGaugeBlock buildSteelTankGauge(DyeColor color) {
     return new SteelTankGaugeBlock(BlockBehaviour.Properties.of()
         .instrument(NoteBlockInstrument.HAT)
         .sound(SoundType.GLASS)
@@ -243,7 +243,7 @@ public class RailcraftBlocks {
         .lightLevel(LightBlock.LIGHT_EMISSION));
   }
 
-  private static SteelTankValveBlock buildSteelTankValve() {
+  private static SteelTankValveBlock buildSteelTankValve(DyeColor color) {
     return new SteelTankValveBlock(BlockBehaviour.Properties.of()
         .mapColor(MapColor.METAL)
         .sound(SoundType.METAL)
@@ -254,7 +254,7 @@ public class RailcraftBlocks {
         .explosionResistance(15));
   }
 
-  private static SteelTankWallBlock buildSteelTankWall() {
+  private static SteelTankWallBlock buildSteelTankWall(DyeColor color) {
     return new SteelTankWallBlock(BlockBehaviour.Properties.of()
         .mapColor(MapColor.METAL)
         .sound(SoundType.METAL)
@@ -265,7 +265,7 @@ public class RailcraftBlocks {
         .explosionResistance(15));
   }
 
-  private static PostBlock buildPost() {
+  private static PostBlock buildPost(DyeColor color) {
     return new PostBlock(BlockBehaviour.Properties.of()
         .mapColor(MapColor.METAL)
         .strength(2.0F, 3.0F)
@@ -1507,97 +1507,84 @@ public class RailcraftBlocks {
               .requiresCorrectToolForDrops()
               .strength(50, 1200)));
 
-  public static final DeferredBlock<Block> QUARRIED_STONE =
-      deferredRegister.register("quarried_stone",
-          () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+  public static final VariantSet<DecorativeBlock, Block, Block> DECORATIVE_STONE =
+      VariantSet.of(
+          DecorativeBlock.class,
+          deferredRegister,
+          "%s_stone",
+          __ -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
 
-  public static final DeferredBlock<Block> QUARRIED_COBBLESTONE =
-      deferredRegister.register("quarried_cobblestone",
-          () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.COBBLESTONE)));
+  public static final VariantSet<DecorativeBlock, Block, Block> DECORATIVE_COBBLESTONE =
+      VariantSet.of(
+          DecorativeBlock.class,
+          deferredRegister,
+          "%s_cobblestone",
+          __ -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.COBBLESTONE)));
 
-  public static final DeferredBlock<Block> POLISHED_QUARRIED_STONE =
-      deferredRegister.register("polished_quarried_stone",
-          () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_ANDESITE)));
+  public static final VariantSet<DecorativeBlock, Block, Block> POLISHED_DECORATIVE_STONE =
+      VariantSet.of(
+          DecorativeBlock.class,
+          deferredRegister,
+          "polished_%s_stone",
+          __ -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_ANDESITE)));
 
-  public static final DeferredBlock<Block> CHISELED_QUARRIED_STONE =
-      deferredRegister.register("chiseled_quarried_stone",
-          () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.CHISELED_STONE_BRICKS)));
+  public static final VariantSet<DecorativeBlock, Block, Block> CHISELED_DECORATIVE_STONE =
+      VariantSet.of(
+          DecorativeBlock.class,
+          deferredRegister,
+          "chiseled_%s_stone",
+          __ -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.CHISELED_STONE_BRICKS)));
 
-  public static final DeferredBlock<Block> ETCHED_QUARRIED_STONE =
-      deferredRegister.register("etched_quarried_stone",
-          () -> new Block(BlockBehaviour.Properties.ofFullCopy(QUARRIED_STONE.get())));
+  public static final VariantSet<DecorativeBlock, Block, Block> ETCHED_DECORATIVE_STONE =
+      VariantSet.of(
+          DecorativeBlock.class,
+          deferredRegister,
+          "etched_%s_stone",
+          __ -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
 
-  public static final DeferredBlock<Block> QUARRIED_BRICKS =
-      deferredRegister.register("quarried_bricks",
-          () -> new Block(BlockBehaviour.Properties.ofFullCopy(QUARRIED_STONE.get())));
+  public static final VariantSet<DecorativeBlock, Block, Block> DECORATIVE_BRICKS =
+      VariantSet.of(
+          DecorativeBlock.class,
+          deferredRegister,
+          "%s_bricks",
+          __ -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
 
-  public static final DeferredBlock<StairBlock> QUARRIED_BRICK_STAIRS =
-      deferredRegister.register("quarried_brick_stairs",
-          () -> new StairBlock(QUARRIED_BRICKS.get().defaultBlockState(),
-              BlockBehaviour.Properties.ofFullCopy(QUARRIED_STONE.get())));
+  public static final VariantSet<DecorativeBlock, Block, StairBlock> DECORATIVE_BRICK_STAIRS =
+      VariantSet.of(
+          DecorativeBlock.class,
+          deferredRegister,
+          "%s_brick_stairs",
+          type -> new StairBlock(DECORATIVE_BRICKS.variantFor(type).get().defaultBlockState(),
+              BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
 
-  public static final DeferredBlock<SlabBlock> QUARRIED_BRICK_SLAB =
-      deferredRegister.register("quarried_brick_slab",
-          () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(QUARRIED_STONE.get())));
+  public static final VariantSet<DecorativeBlock, Block, SlabBlock> DECORATIVE_BRICK_SLAB =
+      VariantSet.of(
+          DecorativeBlock.class,
+          deferredRegister,
+          "%s_brick_slab",
+          __ -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
 
-  public static final DeferredBlock<Block> QUARRIED_PAVER =
-      deferredRegister.register("quarried_paver",
-          () -> new Block(BlockBehaviour.Properties.ofFullCopy(QUARRIED_STONE.get())));
+  public static final VariantSet<DecorativeBlock, Block, Block> DECORATIVE_PAVER =
+      VariantSet.of(
+          DecorativeBlock.class,
+          deferredRegister,
+          "%s_paver",
+          __ -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
 
-  public static final DeferredBlock<StairBlock> QUARRIED_PAVER_STAIRS =
-      deferredRegister.register("quarried_paver_stairs",
-          () -> new StairBlock(QUARRIED_PAVER.get().defaultBlockState(),
-              BlockBehaviour.Properties.ofFullCopy(QUARRIED_STONE.get())));
+  public static final VariantSet<DecorativeBlock, Block, StairBlock> DECORATIVE_PAVER_STAIRS =
+      VariantSet.of(
+          DecorativeBlock.class,
+          deferredRegister,
+          "%s_paver_stairs",
+          type -> new StairBlock(DECORATIVE_PAVER.variantFor(type).get().defaultBlockState(),
+              BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
 
-  public static final DeferredBlock<SlabBlock> QUARRIED_PAVER_SLAB =
-      deferredRegister.register("quarried_paver_slab",
-          () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(QUARRIED_STONE.get())));
-
-  public static final DeferredBlock<Block> ABYSSAL_STONE =
-      deferredRegister.register("abyssal_stone",
-          () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
-
-  public static final DeferredBlock<Block> ABYSSAL_COBBLESTONE =
-      deferredRegister.register("abyssal_cobblestone",
-          () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.COBBLESTONE)));
-
-  public static final DeferredBlock<Block> POLISHED_ABYSSAL_STONE =
-      deferredRegister.register("polished_abyssal_stone",
-          () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_ANDESITE)));
-
-  public static final DeferredBlock<Block> CHISELED_ABYSSAL_STONE =
-      deferredRegister.register("chiseled_abyssal_stone",
-          () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.CHISELED_STONE_BRICKS)));
-
-  public static final DeferredBlock<Block> ETCHED_ABYSSAL_STONE =
-      deferredRegister.register("etched_abyssal_stone",
-          () -> new Block(BlockBehaviour.Properties.ofFullCopy(ABYSSAL_STONE.get())));
-
-  public static final DeferredBlock<Block> ABYSSAL_BRICKS =
-      deferredRegister.register("abyssal_bricks",
-          () -> new Block(BlockBehaviour.Properties.ofFullCopy(ABYSSAL_STONE.get())));
-
-  public static final DeferredBlock<StairBlock> ABYSSAL_BRICK_STAIRS =
-      deferredRegister.register("abyssal_brick_stairs",
-          () -> new StairBlock(ABYSSAL_BRICKS.get().defaultBlockState(),
-              BlockBehaviour.Properties.ofFullCopy(ABYSSAL_STONE.get())));
-
-  public static final DeferredBlock<SlabBlock> ABYSSAL_BRICK_SLAB =
-      deferredRegister.register("abyssal_brick_slab",
-          () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(ABYSSAL_STONE.get())));
-
-  public static final DeferredBlock<Block> ABYSSAL_PAVER =
-      deferredRegister.register("abyssal_paver",
-          () -> new Block(BlockBehaviour.Properties.ofFullCopy(ABYSSAL_STONE.get())));
-
-  public static final DeferredBlock<StairBlock> ABYSSAL_PAVER_STAIRS =
-      deferredRegister.register("abyssal_paver_stairs",
-          () -> new StairBlock(ABYSSAL_PAVER.get().defaultBlockState(),
-              BlockBehaviour.Properties.ofFullCopy(ABYSSAL_STONE.get())));
-
-  public static final DeferredBlock<SlabBlock> ABYSSAL_PAVER_SLAB =
-      deferredRegister.register("abyssal_paver_slab",
-          () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(ABYSSAL_STONE.get())));
+  public static final VariantSet<DecorativeBlock, Block, SlabBlock> DECORATIVE_PAVER_SLAB =
+      VariantSet.of(
+          DecorativeBlock.class,
+          deferredRegister,
+          "%s_paver_slab",
+          __ -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
 
   public static final DeferredBlock<WorldSpikeBlock> WORLD_SPIKE =
       deferredRegister.register("world_spike",

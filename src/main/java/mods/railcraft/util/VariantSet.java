@@ -5,7 +5,6 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
-import java.util.function.Supplier;
 import java.util.stream.Stream;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.util.StringRepresentable;
@@ -27,12 +26,12 @@ public sealed interface VariantSet<K extends Enum<K> & StringRepresentable, R, V
   static <K extends Enum<K> & StringRepresentable, R, V extends R> VariantSet<K, R, V> of(
       Class<K> keyType,
       DeferredRegister<R> deferredRegister,
-      String nameSuffix,
-      Supplier<V> factory) {
+      String nameTemplate,
+      Function<K, V> factory) {
     Map<K, DeferredHolder<R, ? extends V>> variants = new EnumMap<>(keyType);
     for (var key : keyType.getEnumConstants()) {
       variants.put(key, deferredRegister.register(
-          key.getSerializedName() + "_" + nameSuffix, factory));
+          String.format(nameTemplate, key.getSerializedName()), () -> factory.apply(key)));
     }
     return new MappedVariantSet<>(variants);
   }
