@@ -40,7 +40,7 @@ public class SimpleBlockSignalNetwork extends BlockEntitySignalNetwork<BlockSign
 
   private SignalAspect signalAspect = SignalAspect.BLINK_RED;
   @Nullable
-  private Consumer<SignalAspect> signalAspectListener;
+  private final Consumer<SignalAspect> signalAspectListener;
 
   public SimpleBlockSignalNetwork(int maxPeers, Runnable syncListener,
       @Nullable Consumer<SignalAspect> signalAspectListener,
@@ -119,9 +119,9 @@ public class SimpleBlockSignalNetwork extends BlockEntitySignalNetwork<BlockSign
   }
 
   @Override
-  public SignalAspect aspectExcluding(BlockPos exludingPos) {
+  public SignalAspect aspectExcluding(BlockPos excludingPos) {
     return this.stream()
-        .filter(peer -> !peer.asBlockEntity().getBlockPos().equals(exludingPos))
+        .filter(peer -> !peer.asBlockEntity().getBlockPos().equals(excludingPos))
         .map(this::calculateSignalAspect)
         .reduce(SignalAspect.GREEN, SignalAspect::mostRestrictive);
   }
@@ -177,8 +177,6 @@ public class SimpleBlockSignalNetwork extends BlockEntitySignalNetwork<BlockSign
         if (cartZ < trackPos.getZ() + zOffset && motionZ > 0) {
           return SignalAspect.RED;
         }
-
-        newAspect = SignalAspect.YELLOW;
       }
 
       if (cartX > trackPos.getX() + xOffset && motionX < 0) {
@@ -235,7 +233,7 @@ public class SimpleBlockSignalNetwork extends BlockEntitySignalNetwork<BlockSign
     }
 
     return new TrackValidationResult(false,
-        "INVALID_SCAN_FAIL: " + scanResult.status().toString());
+        "INVALID_SCAN_FAIL: " + scanResult.status());
   }
 
   public void serverTick() {

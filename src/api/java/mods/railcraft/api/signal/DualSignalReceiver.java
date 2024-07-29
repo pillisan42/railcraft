@@ -3,6 +3,7 @@ package mods.railcraft.api.signal;
 import java.util.function.Consumer;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
+import mods.railcraft.api.core.CompoundTagKeys;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -41,11 +42,11 @@ public class DualSignalReceiver extends SingleSignalReceiver {
 
   @Override
   public void unlinked(SignalController signalController) {
-    if (this.primarySignalClient.getSignalControllerBlockPos()
-        .equals(signalController.blockPos())) {
+    if (signalController.blockPos()
+        .equals(this.primarySignalClient.getSignalControllerBlockPos())) {
       this.primarySignalClient.unlinked();
-    } else if (this.secondarySignalClient.getSignalControllerBlockPos()
-        .equals(signalController.blockPos())) {
+    } else if (signalController.blockPos()
+        .equals(this.secondarySignalClient.getSignalControllerBlockPos())) {
       this.secondarySignalClient.unlinked();
     } else {
       logger.warn(
@@ -78,15 +79,15 @@ public class DualSignalReceiver extends SingleSignalReceiver {
 
   @Override
   public CompoundTag serializeNBT(HolderLookup.Provider provider) {
-    CompoundTag tag = super.serializeNBT(provider);
-    tag.put("secondarySignalClient", this.secondarySignalClient.serializeNBT(provider));
+    var tag = super.serializeNBT(provider);
+    tag.put(CompoundTagKeys.SECONDARY_SIGNAL_CLIENT, this.secondarySignalClient.serializeNBT(provider));
     return tag;
   }
 
   @Override
   public void deserializeNBT(HolderLookup.Provider provider, CompoundTag tag) {
     super.deserializeNBT(provider, tag);
-    this.secondarySignalClient.deserializeNBT(provider, tag.getCompound("secondarySignalClient"));
+    this.secondarySignalClient.deserializeNBT(provider, tag.getCompound(CompoundTagKeys.SECONDARY_SIGNAL_CLIENT));
   }
 
   @Override

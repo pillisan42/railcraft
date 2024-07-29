@@ -90,6 +90,7 @@ public final class CompoundTagKeys {
   public static final String PREV_CART_ID = "prevCartId";
   public static final String PRIMARY_COLOR = "primaryColor";
   public static final String PRIMARY_MODE = "primaryMode";
+  public static final String PRIMARY_SIGNAL_CLIENT = "primarySignalClient";
   public static final String PROCESSING = "processing";
   public static final String PROCESS_STATE = "processState";
   public static final String PROGRESS = "progress";
@@ -102,10 +103,12 @@ public final class CompoundTagKeys {
   public static final String ROTOR_CONTAINER = "rotorContainer";
   public static final String SEASON = "season";
   public static final String SECONDARY_COLOR = "secondaryColor";
+  public static final String SECONDARY_SIGNAL_CLIENT = "secondarySignalClient";
   public static final String SIGNALS = "signals";
   public static final String SIGNAL_ASPECT = "signalAspect";
   public static final String SIGNAL_ASPECT_TRIGGER_SIGNALS = "signalAspectTriggerSignals";
   public static final String SIGNAL_CONTROLLER = "signalController";
+  public static final String SIGNAL_CONTROLLER_POS = "signalControllerPos";
   public static final String SIGNAL_RECEIVER = "signalReceiver";
   public static final String SPEED = "speed";
   public static final String SPRINGING_CARTS = "springingCarts";

@@ -137,6 +137,7 @@ public final class TrackUtil {
         || BaseRailBlock.isRail(level, pos.below());
   }
 
+  @Nullable
   public static TrackType getTrackType(ItemStack stack) {
     return stack.getItem() instanceof TrackTypeLike trackTypeLike
         ? trackTypeLike.getTrackType(stack)

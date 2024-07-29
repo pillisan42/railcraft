@@ -125,7 +125,7 @@ dependencies {
     //localRuntime "dev.emi:emi-neoforge:$emi_version+$minecraft_version"
 
     compileOnly "vazkii.patchouli:Patchouli:$patchouli_version:api"
-    //localRuntime "vazkii.patchouli:Patchouli:$patchouli_version"
+    localRuntime "vazkii.patchouli:Patchouli:$patchouli_version"
 
     implementation "curse.maven:jade-api-324717:$jade_id"
 }

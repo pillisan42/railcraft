@@ -4,6 +4,7 @@ import java.util.function.Consumer;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
+import mods.railcraft.api.core.CompoundTagKeys;
 import mods.railcraft.api.core.NetworkSerializable;
 import mods.railcraft.api.signal.entity.SignalControllerEntity;
 import net.minecraft.core.BlockPos;
@@ -67,13 +68,14 @@ public class SingleSignalReceiver
 
   @Override
   public CompoundTag serializeNBT(HolderLookup.Provider provider) {
-    CompoundTag tag = new CompoundTag();
-    tag.put("primarySignalClient", this.primarySignalClient.serializeNBT(provider));
-    return tag;  }
+    var tag = new CompoundTag();
+    tag.put(CompoundTagKeys.PRIMARY_SIGNAL_CLIENT, this.primarySignalClient.serializeNBT(provider));
+    return tag;
+  }
 
   @Override
   public void deserializeNBT(HolderLookup.Provider provider, CompoundTag tag) {
-    this.primarySignalClient.deserializeNBT(provider, tag.getCompound("primarySignalClient"));
+    this.primarySignalClient.deserializeNBT(provider, tag.getCompound(CompoundTagKeys.PRIMARY_SIGNAL_CLIENT));
   }
 
   @Override
@@ -175,15 +177,15 @@ public class SingleSignalReceiver
     public CompoundTag serializeNBT(HolderLookup.Provider provider) {
       var tag = new CompoundTag();
       if (this.signalControllerPos != null) {
-        tag.put("signalControllerPos", NbtUtils.writeBlockPos(this.signalControllerPos));
+        tag.put(CompoundTagKeys.SIGNAL_CONTROLLER_POS, NbtUtils.writeBlockPos(this.signalControllerPos));
       }
       return tag;
     }
 
     @Override
     public void deserializeNBT(HolderLookup.Provider provider, CompoundTag tag) {
-      if (tag.contains("signalControllerPos", Tag.TAG_COMPOUND)) {
-        this.signalControllerPos = NbtUtils.readBlockPos(tag,"signalControllerPos").orElse(null);
+      if (tag.contains(CompoundTagKeys.SIGNAL_CONTROLLER_POS, Tag.TAG_COMPOUND)) {
+        this.signalControllerPos = NbtUtils.readBlockPos(tag,CompoundTagKeys.SIGNAL_CONTROLLER_POS).orElse(null);
       }
     }
   }
