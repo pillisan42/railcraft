@@ -143,7 +143,6 @@ public class Railcraft {
     NeoForge.EVENT_BUS.register(this);
 
     RailcraftConfig.registerConfig(modContainer);
-    modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
 
     var modEventBus = modContainer.getEventBus();
     modEventBus.addListener(this::handleRegisterCapabilities);
@@ -153,6 +152,7 @@ public class Railcraft {
 
     if (dist.isClient()) {
       ClientManager.init(modEventBus);
+      modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
     }
 
     PacketHandler.register(modEventBus);
