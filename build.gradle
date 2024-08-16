@@ -77,14 +77,8 @@ runs {
         }
     }
 
-    client {
-    }
-
     server {
         programArgument '--nogui'
-    }
-
-    gameTestServer {
     }
 
     data {
@@ -121,7 +115,7 @@ dependencies {
     compileOnly "mezz.jei:jei-$minecraft_version-neoforge-api:$jei_version"
     localRuntime "mezz.jei:jei-$minecraft_version-neoforge:$jei_version"
 
-    compileOnly "dev.emi:emi-neoforge:$emi_version+$minecraft_version:api"
+    compileOnly "dev.emi:emi-neoforge:$emi_version+1.21:api"
     //localRuntime "dev.emi:emi-neoforge:$emi_version+$minecraft_version"
 
     compileOnly "vazkii.patchouli:Patchouli:$patchouli_version:api"

@@ -1,12 +1,8 @@
 package mods.railcraft.integrations.jei.category;
 
-import java.util.List;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
-import mezz.jei.api.gui.ingredient.IRecipeSlotTooltipCallback;
-import mezz.jei.api.gui.ingredient.IRecipeSlotView;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
@@ -90,22 +86,11 @@ public class CrusherRecipeCategory implements IRecipeCategory<CrusherRecipe> {
             .addSlot(RecipeIngredientRole.OUTPUT, 91 + x * 18, y * 18 + 1)
             .addItemStack(itemStack);
         if (!itemStack.isEmpty()) {
-          recipeLayout.addTooltipCallback(new IRecipeSlotTooltipCallback() {
-            @Override
-            public void onTooltip(IRecipeSlotView recipeSlotView, List<Component> tooltip) {
-              double probability = outputs.get(index - 1).probability() * 100;
-              var probText = Component.translatable(Translations.Jei.CRUSHER_TIP, probability)
-                  .withStyle(ChatFormatting.GRAY);
-              tooltip.add(probText);
-            }
-
-            @Override
-            public void onRichTooltip(IRecipeSlotView recipeSlotView, ITooltipBuilder tooltip) {
-              double probability = outputs.get(index - 1).probability() * 100;
-              var probText = Component.translatable(Translations.Jei.CRUSHER_TIP, probability)
-                  .withStyle(ChatFormatting.GRAY);
-              tooltip.add(probText);
-            }
+          recipeLayout.addRichTooltipCallback((recipeSlotView, tooltip) -> {
+            double probability = outputs.get(index - 1).probability() * 100;
+            var probText = Component.translatable(Translations.Jei.CRUSHER_TIP, probability)
+                .withStyle(ChatFormatting.GRAY);
+            tooltip.add(probText);
           });
         }
       }
