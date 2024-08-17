@@ -168,8 +168,7 @@ public enum StackFilter implements Predicate<ItemStack> {
       boolean matches = ItemStack.isSameItem(cartItem, itemStack);
 
       if (itemStack.has(DataComponents.CUSTOM_NAME)) {
-        return matches && itemStack.getDisplayName().getContents()
-            .equals(cartItem.getDisplayName().getContents());
+        return matches && itemStack.getHoverName().equals(cart.getCustomName());
       }
 
       return matches;
