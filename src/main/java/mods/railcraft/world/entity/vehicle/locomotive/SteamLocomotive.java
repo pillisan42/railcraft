@@ -24,6 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.items.wrapper.InvWrapper;
 
 public class SteamLocomotive extends BaseSteamLocomotive implements WorldlyContainer {
 
@@ -114,6 +115,10 @@ public class SteamLocomotive extends BaseSteamLocomotive implements WorldlyConta
   @Override
   protected Container ticketContainer() {
     return this.ticketContainer;
+  }
+
+  public InvWrapper getFuelContainer() {
+    return new InvWrapper(this.allFuelContainer);
   }
 
   @Override

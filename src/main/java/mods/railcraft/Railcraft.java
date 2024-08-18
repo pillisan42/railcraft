@@ -202,6 +202,8 @@ public class Railcraft {
         RailcraftEntityTypes.ELECTRIC_LOCOMOTIVE.get(), (e, side) -> e.getBatteryCart());
     event.registerEntity(Capabilities.FluidHandler.ENTITY,
         RailcraftEntityTypes.STEAM_LOCOMOTIVE.get(), (e, side) -> e.getTankManager());
+    event.registerEntity(Capabilities.ItemHandler.ENTITY_AUTOMATION,
+        RailcraftEntityTypes.STEAM_LOCOMOTIVE.get(), (e, side) -> e.getFuelContainer());
 
     event.registerBlockEntity(Capabilities.FluidHandler.BLOCK,
         RailcraftBlockEntityTypes.WATER_TANK_SIDING.get(), WaterTankSidingBlockEntity::getFluidCap);

@@ -101,7 +101,7 @@ public class FluidLoaderBlockEntity extends FluidManipulatorBlockEntity {
 
   @Override
   protected void waitForReset(@Nullable AbstractMinecart cart) {
-    if (isPipeRetracted()) {
+    if (isPipeRetracted() && cart != null) {
       this.sendCart(cart);
     } else {
       this.retractPipe();
@@ -129,7 +129,7 @@ public class FluidLoaderBlockEntity extends FluidManipulatorBlockEntity {
       return;
     }
     var cartNeedsFilling = this.cartNeedsFilling(tankCart);
-    var needsPipe = cart != null && this.getBlockPos().getY() - cart.position().y() > 1.0D;
+    var needsPipe = this.getBlockPos().getY() - cart.position().y() > 1.0D;
 
     if (cartNeedsFilling && needsPipe) {
       this.extendPipe();

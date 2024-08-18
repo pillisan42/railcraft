@@ -182,7 +182,9 @@ public abstract class ManipulatorBlockEntity extends ContainerBlockEntity implem
   }
 
   protected void waitForReset(@Nullable AbstractMinecart cart) {
-    this.sendCart(cart);
+    if (cart != null) {
+      this.sendCart(cart);
+    }
   }
 
   protected void onNoCart() {}
