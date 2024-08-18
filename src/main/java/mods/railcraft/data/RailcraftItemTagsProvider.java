@@ -305,5 +305,13 @@ public class RailcraftItemTagsProvider extends ItemTagsProvider {
     this.tag(ItemTags.CHEST_ARMOR).addTags(RailcraftTags.Items.ARMORS_CHESTPLATES_STEEL);
     this.tag(ItemTags.LEG_ARMOR).addTags(RailcraftTags.Items.ARMORS_LEGGINGS_STEEL);
     this.tag(ItemTags.FOOT_ARMOR).addTags(RailcraftTags.Items.ARMORS_BOOTS_STEEL);
+
+    this.tag(RailcraftTags.Items.ANIMAL_FOODS)
+        .addTags(ItemTags.SNIFFER_FOOD, ItemTags.PIGLIN_FOOD, ItemTags.FOX_FOOD, ItemTags.COW_FOOD,
+            ItemTags.GOAT_FOOD, ItemTags.SHEEP_FOOD, ItemTags.WOLF_FOOD, ItemTags.CAT_FOOD,
+            ItemTags.HORSE_FOOD, ItemTags.CAMEL_FOOD, ItemTags.ARMADILLO_FOOD, ItemTags.BEE_FOOD,
+            ItemTags.CHICKEN_FOOD, ItemTags.FROG_FOOD, ItemTags.HOGLIN_FOOD, ItemTags.LLAMA_FOOD,
+            ItemTags.OCELOT_FOOD, ItemTags.PANDA_FOOD, ItemTags.PIG_FOOD, ItemTags.RABBIT_FOOD,
+            ItemTags.STRIDER_FOOD, ItemTags.TURTLE_FOOD, ItemTags.PARROT_FOOD, ItemTags.AXOLOTL_FOOD);
   }
 }

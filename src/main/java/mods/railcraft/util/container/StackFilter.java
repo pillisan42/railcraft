@@ -16,7 +16,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MinecartItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.StemBlock;
@@ -41,8 +40,7 @@ public enum StackFilter implements Predicate<ItemStack> {
       .builtInRegistryHolder().is(RailcraftTags.Blocks.BALLAST)),
   FLUID_CONTAINER(itemStack -> itemStack
       .getCapability(Capabilities.FluidHandler.ITEM) != null),
-  FEED(itemStack -> itemStack.has(DataComponents.FOOD)
-      || itemStack.is(Items.WHEAT)
+  FEED(itemStack -> itemStack.is(RailcraftTags.Items.ANIMAL_FOODS)
       || ContainerTools.getBlockFromStack(itemStack) instanceof StemBlock),
   CARGO(itemStack -> (RailcraftConfig.SERVER.chestAllowFluids.get()
       || !FluidTools.isFluidHandler(itemStack))
