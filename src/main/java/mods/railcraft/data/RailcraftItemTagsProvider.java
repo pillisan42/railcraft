@@ -55,6 +55,16 @@ public class RailcraftItemTagsProvider extends ItemTagsProvider {
     this.tag(RailcraftTags.Items.LEAD_RAW)
         .add(RailcraftItems.LEAD_RAW.get());
 
+    this.tag(Tags.Items.NUGGETS)
+        .addTag(RailcraftTags.Items.STEEL_NUGGET)
+        .addTag(RailcraftTags.Items.TIN_NUGGET)
+        .addTag(RailcraftTags.Items.ZINC_NUGGET)
+        .addTag(RailcraftTags.Items.BRASS_NUGGET)
+        .addTag(RailcraftTags.Items.BRONZE_NUGGET)
+        .addTag(RailcraftTags.Items.NICKEL_NUGGET)
+        .addTag(RailcraftTags.Items.INVAR_NUGGET)
+        .addTag(RailcraftTags.Items.SILVER_NUGGET)
+        .addTag(RailcraftTags.Items.LEAD_NUGGET);
     this.tag(RailcraftTags.Items.STEEL_NUGGET)
         .add(RailcraftItems.STEEL_NUGGET.get());
     this.tag(RailcraftTags.Items.TIN_NUGGET)
@@ -283,6 +293,7 @@ public class RailcraftItemTagsProvider extends ItemTagsProvider {
     this.copy(RailcraftTags.Blocks.DETECTOR, RailcraftTags.Items.DETECTOR);
 
     // TOOLS
+    this.tag(Tags.Items.TOOLS_SHEAR).add(RailcraftItems.STEEL_SHEARS.get());
     this.tag(RailcraftTags.Items.TOOLS_AXES_STEEL).add(RailcraftItems.STEEL_AXE.get());
     this.tag(RailcraftTags.Items.TOOLS_HOES_STEEL).add(RailcraftItems.STEEL_HOE.get());
     this.tag(RailcraftTags.Items.TOOLS_PICKAXES_STEEL).add(RailcraftItems.STEEL_PICKAXE.get());
@@ -301,10 +312,12 @@ public class RailcraftItemTagsProvider extends ItemTagsProvider {
     this.tag(ItemTags.SHOVELS).add(RailcraftItems.STEEL_SHOVEL.get());
     this.tag(ItemTags.SWORDS).add(RailcraftItems.STEEL_SWORD.get());
 
-    this.tag(ItemTags.HEAD_ARMOR).addTags(RailcraftTags.Items.ARMORS_HELMETS_STEEL);
-    this.tag(ItemTags.CHEST_ARMOR).addTags(RailcraftTags.Items.ARMORS_CHESTPLATES_STEEL);
-    this.tag(ItemTags.LEG_ARMOR).addTags(RailcraftTags.Items.ARMORS_LEGGINGS_STEEL);
-    this.tag(ItemTags.FOOT_ARMOR).addTags(RailcraftTags.Items.ARMORS_BOOTS_STEEL);
+    this.tag(ItemTags.HEAD_ARMOR).addTag(RailcraftTags.Items.ARMORS_HELMETS_STEEL);
+    this.tag(ItemTags.CHEST_ARMOR).addTag(RailcraftTags.Items.ARMORS_CHESTPLATES_STEEL);
+    this.tag(ItemTags.LEG_ARMOR)
+        .add(RailcraftItems.OVERALLS.get())
+        .addTag(RailcraftTags.Items.ARMORS_LEGGINGS_STEEL);
+    this.tag(ItemTags.FOOT_ARMOR).addTag(RailcraftTags.Items.ARMORS_BOOTS_STEEL);
 
     this.tag(RailcraftTags.Items.ANIMAL_FOODS)
         .addTags(ItemTags.SNIFFER_FOOD, ItemTags.PIGLIN_FOOD, ItemTags.FOX_FOOD, ItemTags.COW_FOOD,

@@ -1,4 +1,4 @@
-// 1.21.1	2024-08-18T10:11:12.895228	Tags for minecraft:item mod id railcraft
+// 1.21.1	2024-08-19T12:26:50.876519	Tags for minecraft:item mod id railcraft
 e4b5c3cfded4b9b76efeda37728f26dc89261239 data/c/tags/item/armors/boots/steel.json
 5251495abc7cf69ab447d425014c585ffd3ee618 data/c/tags/item/armors/chestplates/steel.json
 e17d210ae3b04c5e5696fab17c38c94dcb437f75 data/c/tags/item/armors/helmets/steel.json
@@ -30,6 +30,7 @@ bef69e50bb3a07426037475ffcfecb11d7c4581a data/c/tags/item/ingots/silver.json
 73086904c5958ecf1a6bc0470a37749acdf03a51 data/c/tags/item/ingots/steel.json
 43f588354afc1316ef5dbfe18cfa1bfdc6c6ca1f data/c/tags/item/ingots/tin.json
 e0e8b9e8910af571f523b10ab0b8985f9dc14fa1 data/c/tags/item/ingots/zinc.json
+cb893a9a01b1a0981ba2966891721eee4568179c data/c/tags/item/nuggets.json
 4d2e0f66d86e6c8e647cd4e84ffb370a5cc286c6 data/c/tags/item/nuggets/brass.json
 ba5451d28b6b6296fcde2c8e1c303489bbbb4cba data/c/tags/item/nuggets/bronze.json
 8c45814923cfe9a548ecf767cacf33da717399bc data/c/tags/item/nuggets/invar.json
@@ -84,6 +85,7 @@ f20e839f832dcea6925586af038aa6dd6fcae88a data/c/tags/item/storage_blocks/zinc.js
 e3ba2fab927d9f5cba4296693574f0ca9cac69eb data/c/tags/item/tools/axes/steel.json
 88e186f1e72ff7a1d3bfbcb969ef18b8a7acbb5f data/c/tags/item/tools/hoes/steel.json
 c12118bda87efc5274515a86a0a7f3b189982de6 data/c/tags/item/tools/pickaxes/steel.json
+9c4696d2ed397966765f5b6e61664c5147e9bac9 data/c/tags/item/tools/shear.json
 15360ef6012773af817ef8496de52353494b4db3 data/c/tags/item/tools/shovels/steel.json
 05168ea5fb65c2a597f1ca271644789e1dd9aa9c data/c/tags/item/tools/swords/steel.json
 e3ba2fab927d9f5cba4296693574f0ca9cac69eb data/minecraft/tags/item/axes.json
@@ -91,7 +93,7 @@ e3ba2fab927d9f5cba4296693574f0ca9cac69eb data/minecraft/tags/item/axes.json
 ec96409b13e00aacfd3a6d9f397e2ed76dda5165 data/minecraft/tags/item/foot_armor.json
 1750a6e35922e87c5db66c69cf45b2d758891774 data/minecraft/tags/item/head_armor.json
 88e186f1e72ff7a1d3bfbcb969ef18b8a7acbb5f data/minecraft/tags/item/hoes.json
-1ec438c0a19b0b027659b539b5cd8f95c0736079 data/minecraft/tags/item/leg_armor.json
+342cd7fdcebcf1dd28e68b05c13be4ac1b7a4725 data/minecraft/tags/item/leg_armor.json
 c12118bda87efc5274515a86a0a7f3b189982de6 data/minecraft/tags/item/pickaxes.json
 15360ef6012773af817ef8496de52353494b4db3 data/minecraft/tags/item/shovels.json
 05168ea5fb65c2a597f1ca271644789e1dd9aa9c data/minecraft/tags/item/swords.json
