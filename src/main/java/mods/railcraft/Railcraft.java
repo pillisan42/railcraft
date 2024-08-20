@@ -114,6 +114,7 @@ import net.neoforged.neoforge.event.entity.EntityLeaveLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.event.server.ServerStartedEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
@@ -420,6 +421,13 @@ public class Railcraft {
     if (event.getEntity() instanceof AbstractMinecart cart
         && !cart.level().isClientSide() && cart.isRemoved()) {
       RollingStock.getOrThrow(cart).removed(cart.getRemovalReason());
+    }
+  }
+
+  @SubscribeEvent
+  public void handleLevelUnload(LevelEvent.Unload event) {
+    if (event.getLevel() instanceof ServerLevel level) {
+      ChargeProviderImpl.DISTRIBUTION.removeChargeNetwork(level);
     }
   }
 
