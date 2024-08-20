@@ -78,11 +78,11 @@ runs {
     }
 
     server {
-        programArgument '--nogui'
+        arguments '--nogui'
     }
 
     data {
-        programArguments.addAll '--mod', 'railcraft', '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+        arguments.addAll '--mod', 'railcraft', '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
     }
 }
 
