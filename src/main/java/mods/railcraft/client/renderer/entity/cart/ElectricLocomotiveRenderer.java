@@ -44,9 +44,8 @@ public class ElectricLocomotiveRenderer extends DefaultLocomotiveRenderer {
 
     boolean bright = cart.getMode() == Locomotive.Mode.RUNNING;
 
-    var vertexBuilder = bright
-        ? renderTypeBuffer.getBuffer(this.lampModel.renderType(this.lampTextureOn))
-        : renderTypeBuffer.getBuffer(this.lampModel.renderType(this.lampTextureOff));
+    var vertexBuilder = renderTypeBuffer
+        .getBuffer(this.lampModel.renderType(bright ? this.lampTextureOn : this.lampTextureOff));
 
     this.lampModel.renderToBuffer(poseStack, vertexBuilder,
         bright ? RenderUtil.FULL_LIGHT : packedLight, OverlayTexture.NO_OVERLAY, color);

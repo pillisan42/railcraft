@@ -4,6 +4,7 @@ import java.util.List;
 import mods.railcraft.Translations;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -47,7 +48,7 @@ public class AbandonedTrackBlock extends TrackBlock {
   public void appendHoverText(ItemStack stack, Item.TooltipContext context,
       List<Component> tooltip, TooltipFlag flag) {
     tooltip.add(Component.translatable(Translations.Tips.DANGER)
-        .append(" ")
+        .append(CommonComponents.SPACE)
         .append(Component.translatable(Translations.Tips.DERAILMENT_RISK))
         .withStyle(ChatFormatting.BLUE));
     tooltip.add(Component.translatable(Translations.Tips.ABANDONED_TRACK)

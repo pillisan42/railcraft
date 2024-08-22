@@ -6,6 +6,7 @@ import mods.railcraft.season.Season;
 import mods.railcraft.world.item.component.RailcraftDataComponents;
 import mods.railcraft.world.item.component.SeasonComponent;
 import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -61,7 +62,7 @@ public class SeasonsCrowbarItem extends CrowbarItem {
     if (tooltip) {
       title.withStyle(ChatFormatting.GRAY);
     }
-    return title.append(" ")
+    return title.append(CommonComponents.SPACE)
         .append(value.getDisplayName().copy().withStyle(ChatFormatting.DARK_PURPLE));
   }
 }

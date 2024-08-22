@@ -8,6 +8,7 @@ import mods.railcraft.world.level.block.entity.RailcraftBlockEntityTypes;
 import mods.railcraft.world.level.block.entity.track.CouplerTrackBlockEntity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
@@ -57,7 +58,8 @@ public class CouplerTrackBlock extends PoweredOutfittedTrackBlock implements Ent
     var res = level.setBlockAndUpdate(blockPos, blockState.setValue(MODE, newMode));
     var currentMode = Component.translatable(Translations.Tips.CURRENT_MODE);
     var modeDisplay = newMode.getDisplayName().copy().withStyle(ChatFormatting.DARK_PURPLE);
-    player.displayClientMessage(currentMode.append(" ").append(modeDisplay), true);
+    player.displayClientMessage(
+        currentMode.append(CommonComponents.SPACE).append(modeDisplay), true);
     return res;
   }
 

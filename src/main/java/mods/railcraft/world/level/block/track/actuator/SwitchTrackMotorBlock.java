@@ -7,6 +7,7 @@ import mods.railcraft.world.level.block.entity.RailcraftBlockEntityTypes;
 import mods.railcraft.world.level.block.entity.SwitchTrackMotorBlockEntity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -54,11 +55,11 @@ public class SwitchTrackMotorBlock extends SwitchTrackActuatorBlock implements E
     tooltip.add(Component.translatable(Translations.Tips.SWITCH_TRACKS)
         .withStyle(ChatFormatting.GRAY));
     tooltip.add(Component.translatable(Translations.Tips.AERIAL_LINKAGES)
-        .append(Component.literal(" "))
+        .append(CommonComponents.SPACE)
         .append(Component.translatable(Translations.Tips.RECEIVERS, 1))
         .withStyle(ChatFormatting.BLUE));
     tooltip.add(Component.translatable(Translations.Tips.REDSTONE_LINKAGE)
-        .append(Component.literal(" "))
+        .append(CommonComponents.SPACE)
         .append(Component.translatable(Translations.Tips.LISTEN))
         .withStyle(ChatFormatting.BLUE));
     tooltip.add(Component.translatable(Translations.Tips.RELEVANT_TOOLS)

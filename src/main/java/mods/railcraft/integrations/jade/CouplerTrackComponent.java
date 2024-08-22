@@ -4,6 +4,7 @@ import mods.railcraft.Translations;
 import mods.railcraft.api.core.RailcraftConstants;
 import mods.railcraft.world.level.block.track.outfitted.CouplerTrackBlock;
 import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import snownee.jade.api.BlockAccessor;
@@ -18,7 +19,8 @@ class CouplerTrackComponent implements IBlockComponentProvider {
     if (accessor.getBlock() instanceof CouplerTrackBlock) {
       var mode = CouplerTrackBlock.getMode(accessor.getBlockState()).getDisplayName();
       tooltip.add(Component.translatable(Translations.Tips.CURRENT_MODE)
-          .append(" ").append(mode.copy().withStyle(ChatFormatting.DARK_PURPLE)));
+          .append(CommonComponents.SPACE)
+          .append(mode.copy().withStyle(ChatFormatting.DARK_PURPLE)));
     }
   }
 

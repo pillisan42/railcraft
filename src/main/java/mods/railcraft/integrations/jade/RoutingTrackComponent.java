@@ -8,6 +8,7 @@ import mods.railcraft.world.item.TicketItem;
 import mods.railcraft.world.level.block.entity.track.RoutingTrackBlockEntity;
 import mods.railcraft.world.level.block.track.outfitted.RoutingTrackBlock;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import snownee.jade.api.BlockAccessor;
@@ -27,7 +28,8 @@ class RoutingTrackComponent implements IBlockComponentProvider,
       var tag = accessor.getServerData();
       if (tag.contains(CompoundTagKeys.DESTINATION)) {
         tooltip.add(Component.translatable(Translations.Tips.ROUTING_TICKET_DEST)
-            .append(" ").append(tag.getString(CompoundTagKeys.DESTINATION)));
+            .append(CommonComponents.SPACE)
+            .append(tag.getString(CompoundTagKeys.DESTINATION)));
       }
       tooltip.remove(JadeIds.UNIVERSAL_ITEM_STORAGE);
     }

@@ -12,6 +12,7 @@ import mods.railcraft.world.item.component.LocomotiveOwnerComponent;
 import mods.railcraft.world.item.component.LocomotiveWhistlePitchComponent;
 import mods.railcraft.world.item.component.RailcraftDataComponents;
 import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
@@ -35,7 +36,7 @@ public class LocomotiveItem extends CartItem implements Filter {
     if (owner != null && StringUtils.isNotBlank(owner.getName())) {
       tooltip.add(Component.translatable(Translations.Tips.LOCOMOTIVE_ITEM_OWNER)
           .withStyle(ChatFormatting.AQUA)
-          .append(" ")
+          .append(CommonComponents.SPACE)
           .append(Component.literal(owner.getName()).withStyle(ChatFormatting.GRAY)));
     }
     var color = stack.get(RailcraftDataComponents.LOCOMOTIVE_COLOR);

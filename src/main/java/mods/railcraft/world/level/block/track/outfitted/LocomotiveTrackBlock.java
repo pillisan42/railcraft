@@ -9,6 +9,7 @@ import mods.railcraft.util.FunctionalUtil;
 import mods.railcraft.world.entity.vehicle.locomotive.Locomotive;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
@@ -62,7 +63,8 @@ public class LocomotiveTrackBlock extends PoweredOutfittedTrackBlock {
     var res = level.setBlockAndUpdate(pos, state.setValue(LOCOMOTIVE_MODE, newMode));
     var currentMode = Component.translatable(Translations.Tips.CURRENT_MODE);
     var modeDisplay = newMode.getDisplayName().copy().withStyle(ChatFormatting.DARK_PURPLE);
-    player.displayClientMessage(currentMode.append(" ").append(modeDisplay), true);
+    player.displayClientMessage(
+        currentMode.append(CommonComponents.SPACE).append(modeDisplay), true);
     return res;
   }
 

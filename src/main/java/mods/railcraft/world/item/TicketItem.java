@@ -8,6 +8,7 @@ import mods.railcraft.Translations;
 import mods.railcraft.world.item.component.RailcraftDataComponents;
 import mods.railcraft.world.item.component.TicketComponent;
 import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -47,14 +48,14 @@ public class TicketItem extends Item {
     if (owner != null) {
       list.add(Component.translatable(Translations.Tips.ROUTING_TICKET_ISSUER)
           .withStyle(ChatFormatting.AQUA)
-          .append(" ")
+          .append(CommonComponents.SPACE)
           .append(Component.literal(owner.getName()).withStyle(ChatFormatting.GRAY)));
     }
 
     String dest = getDestination(stack);
     list.add(Component.translatable(Translations.Tips.ROUTING_TICKET_DEST)
         .withStyle(ChatFormatting.AQUA)
-        .append(" ")
+        .append(CommonComponents.SPACE)
         .append((dest.isEmpty()
             ? Component.translatable(Translations.Tips.NONE)
             : Component.literal(dest)).withStyle(ChatFormatting.GRAY)));

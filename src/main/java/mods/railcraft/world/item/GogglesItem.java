@@ -11,6 +11,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.Holder;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.codec.StreamCodec;
@@ -70,7 +71,7 @@ public class GogglesItem extends ArmorItem {
     if (tooltip) {
       title.withStyle(ChatFormatting.GRAY);
     }
-    return title.append(" ").append(value.withStyle(ChatFormatting.DARK_PURPLE));
+    return title.append(CommonComponents.SPACE).append(value.withStyle(ChatFormatting.DARK_PURPLE));
   }
 
   @Override

@@ -7,6 +7,7 @@ import mods.railcraft.Translations;
 import mods.railcraft.api.core.CompoundTagKeys;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -39,7 +40,7 @@ public record LocomotiveWhistlePitchComponent(float whistlePitch) implements Too
     } else {
       consumer.accept(Component.translatable(Translations.Tips.LOCOMOTIVE_ITEM_WHISTLE)
           .withStyle(ChatFormatting.AQUA)
-          .append(" ")
+          .append(CommonComponents.SPACE)
           .append(Component.literal(String.format("%.2f", whistlePitch))
               .withStyle(ChatFormatting.GRAY)));
     }

@@ -7,6 +7,7 @@ import mods.railcraft.Translations;
 import mods.railcraft.api.core.CompoundTagKeys;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.DyeColor;
@@ -19,9 +20,10 @@ public record LocomotiveColorComponent(DyeColor primary, DyeColor secondary)
 
   public static final Codec<LocomotiveColorComponent> CODEC =
       RecordCodecBuilder.create(instance -> instance.group(
-          DyeColor.CODEC.fieldOf(CompoundTagKeys.PRIMARY_COLOR).forGetter(LocomotiveColorComponent::primary),
-          DyeColor.CODEC.fieldOf(CompoundTagKeys.SECONDARY_COLOR).forGetter(
-              LocomotiveColorComponent::secondary)
+          DyeColor.CODEC.fieldOf(CompoundTagKeys.PRIMARY_COLOR)
+              .forGetter(LocomotiveColorComponent::primary),
+          DyeColor.CODEC.fieldOf(CompoundTagKeys.SECONDARY_COLOR)
+              .forGetter(LocomotiveColorComponent::secondary)
       ).apply(instance, LocomotiveColorComponent::new));
 
   public static final StreamCodec<FriendlyByteBuf, LocomotiveColorComponent> STREAM_CODEC =
@@ -35,13 +37,13 @@ public record LocomotiveColorComponent(DyeColor primary, DyeColor secondary)
       TooltipFlag tooltipFlag) {
     consumer.accept(Component.translatable(Translations.Tips.LOCOMOTIVE_ITEM_PRIMARY)
         .withStyle(ChatFormatting.AQUA)
-        .append(" ")
+        .append(CommonComponents.SPACE)
         .append(Component.translatable("color.minecraft." + primary.getName())
             .withStyle(ChatFormatting.GRAY)));
 
     consumer.accept(Component.translatable(Translations.Tips.LOCOMOTIVE_ITEM_SECONDARY)
         .withStyle(ChatFormatting.AQUA)
-        .append(" ")
+        .append(CommonComponents.SPACE)
         .append(Component.translatable("color.minecraft." + secondary.getName())
             .withStyle(ChatFormatting.GRAY)));
   }
